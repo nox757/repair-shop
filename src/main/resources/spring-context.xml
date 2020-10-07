@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="userDao" class="ru.chibisov.dao.impl.UserDaoImpl"/>
+    <bean name="materialDao" class="ru.chibisov.dao.impl.MaterialDaoImpl"/>
+    <bean name="requestDao" class="ru.chibisov.dao.impl.RequestDaoImpl"/>
+    <bean name="supplierDao" class="ru.chibisov.dao.impl.SupplierDaoImpl"/>
+
+    <bean id="userService" class="ru.chibisov.service.impl.UserServiceImpl" autowire="constructor">
+        <constructor-arg index="0" ref="userDao"/>
+    </bean>
+
+    <bean id="requestService" class="ru.chibisov.service.impl.RequestServiceImpl" autowire="constructor">
+        <constructor-arg index="0" ref="requestDao"/>
+    </bean>
+
+    <bean id="materialService" class="ru.chibisov.service.impl.MaterialServiceImpl" autowire="byName">
+        <property name="materialDao" ref="materialDao"/>
+    </bean>
+
+    <bean id="supplierService" class="ru.chibisov.service.impl.SupplierServiceImpl" autowire="byType">
+        <property name="supplierDao" ref="supplierDao"/>
+    </bean>
+
+
+</beans>
