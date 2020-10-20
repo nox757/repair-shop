@@ -2,6 +2,8 @@ package ru.chibisov.service.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.chibisov.dao.MaterialDao;
 import ru.chibisov.dao.impl.MaterialDaoImpl;
 import ru.chibisov.model.Material;
@@ -9,6 +11,7 @@ import ru.chibisov.service.MaterialService;
 
 import java.math.BigDecimal;
 
+@Service
 public class MaterialServiceImpl implements MaterialService {
 
     private static final Logger log = LogManager.getLogger(MaterialServiceImpl.class.getName());
@@ -19,7 +22,8 @@ public class MaterialServiceImpl implements MaterialService {
         log.info("createService");
     }
 
-    public void setMaterialDao(MaterialDaoImpl materialDao) {
+    @Autowired
+    public void setMaterialDao(MaterialDao materialDao) {
         this.materialDao = materialDao;
     }
 

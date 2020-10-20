@@ -6,8 +6,8 @@ public interface RequestService {
 
     Request getRequestById(Long id);
 
-    Request addRequest(Request contract);
+    Request addRequest(Request request);
 
-    Request updateRequest(Request contract);
+    Request updateRequest(Request request);
 
 }

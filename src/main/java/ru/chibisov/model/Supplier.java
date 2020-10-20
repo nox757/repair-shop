@@ -1,13 +1,41 @@
 package ru.chibisov.model;
 
+import java.util.Set;
+
+/**
+ * Представление сущности поставщик в системе
+ */
 public class Supplier implements Identifiable<Long> {
 
     private static final long serialVersionUID = -7077314038055460239L;
 
+    /**
+     * Уникальный идентификатор пользователя в системе
+     */
     private Long id;
+
+    /**
+     * Название организации поставщика
+     */
     private String orgName;
+
+    /**
+     * ФИО менеджера
+     */
     private String nameAgent;
+
+    /**
+     * Контактный телефон медежера отдела продаж
+     */
     private String phoneAgent;
+
+    /**
+     * Список постаавляемых материалов
+     */
+    private Set<Material> materials;
+
+    public Supplier() {
+    }
 
     @Override
     public Long getId() {
@@ -42,6 +70,14 @@ public class Supplier implements Identifiable<Long> {
         this.phoneAgent = phoneAgent;
     }
 
+    public Set<Material> getMaterials() {
+        return materials;
+    }
+
+    public void setMaterials(Set<Material> materials) {
+        this.materials = materials;
+    }
+
     @Override
     public String toString() {
         return "Supplier{" +
@@ -49,6 +85,7 @@ public class Supplier implements Identifiable<Long> {
                 ", orgName='" + orgName + '\'' +
                 ", nameAgent='" + nameAgent + '\'' +
                 ", phoneAgent='" + phoneAgent + '\'' +
+                ", materials=" + materials +
                 '}';
     }
 }

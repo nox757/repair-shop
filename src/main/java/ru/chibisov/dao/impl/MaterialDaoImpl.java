@@ -1,11 +1,13 @@
 package ru.chibisov.dao.impl;
 
+import org.springframework.stereotype.Repository;
 import ru.chibisov.dao.MaterialDao;
 import ru.chibisov.model.Material;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 
+@Repository
 public class MaterialDaoImpl extends AbstractDao<Material, Long> implements MaterialDao {
 
     public MaterialDaoImpl() {

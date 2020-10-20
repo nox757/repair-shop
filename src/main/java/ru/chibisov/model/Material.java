@@ -2,16 +2,38 @@ package ru.chibisov.model;
 
 import java.math.BigDecimal;
 
+/**
+ * Представление сущности материала в системе
+ * Используется в заявке
+ */
 public class Material implements Identifiable<Long> {
 
     private static final long serialVersionUID = 771612548606857971L;
 
+    /**
+     * Идентификатор материаала в системе
+     */
     private Long id;
+
+    /**
+     * Уникальное кодовое имя материала (артикул, штрихкод и т.п.)
+     */
     private String codeName;
+
+    /**
+     * Назавание материала
+     */
     private String name;
+
+    /**
+     * Цена за единицу
+     */
     private BigDecimal price;
+
+    /**
+     * Текцщий остаток
+     */
     private BigDecimal remains;
-    private Supplier supplier;
 
     @Override
     public Long getId() {
@@ -54,14 +76,6 @@ public class Material implements Identifiable<Long> {
         this.remains = remains;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -88,7 +102,6 @@ public class Material implements Identifiable<Long> {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", remains=" + remains +
-                ", supplier=" + supplier +
                 '}';
     }
 }
