@@ -8,6 +8,8 @@ import ru.chibisov.dao.MaterialDao;
 import ru.chibisov.dao.impl.MaterialDaoImpl;
 import ru.chibisov.model.Material;
 import ru.chibisov.service.MaterialService;
+import ru.chibisov.service.dto.MaterialDto;
+import ru.chibisov.service.dto.mapper.MaterialMapper;
 
 import java.math.BigDecimal;
 
@@ -17,36 +19,41 @@ public class MaterialServiceImpl implements MaterialService {
     private static final Logger log = LogManager.getLogger(MaterialServiceImpl.class.getName());
 
     private MaterialDao materialDao;
+    private MaterialMapper mapper;
 
     @Autowired
-    public MaterialServiceImpl(MaterialDao materialDao) {
+    public MaterialServiceImpl(MaterialDao materialDao, MaterialMapper mapper) {
         log.info("createService");
         this.materialDao = materialDao;
+        this.mapper = mapper;
     }
 
     @Override
-    public Material getMaterialById(Long id) {
-        return materialDao.getById(id);
+    public MaterialDto getMaterialById(Long id) {
+        return mapper.map(materialDao.getById(id));
     }
 
     @Override
-    public Material addMaterial(Material material) {
-        return materialDao.create(material);
+    public MaterialDto addMaterial(MaterialDto materialDto) {
+        Material material = mapper.map(materialDto);
+        return mapper.map(materialDao.create(material));
     }
 
     @Override
-    public Material updateMaterial(Material material) {
-        return materialDao.update(material);
+    public MaterialDto updateMaterial(MaterialDto materialDto) {
+        Material material = mapper.map(materialDto);
+        return mapper.map(materialDao.update(material));
     }
 
     @Override
-    public Material updateRemains(String codeName, BigDecimal value) {
-        return materialDao.updateRemains(codeName, value);
+    public MaterialDto removeMaterial(MaterialDto materialDto) {
+        Material material = mapper.map(materialDto);
+        return mapper.map(materialDao.delete(material));
     }
 
     @Override
-    public Material removeMaterial(Material material) {
-        return materialDao.delete(material);
+    public MaterialDto updateRemains(String codeName, BigDecimal value) {
+        return mapper.map(materialDao.updateRemains(codeName, value));
     }
 
 

@@ -9,6 +9,8 @@ import ru.chibisov.dao.RequestMaterialDao;
 import ru.chibisov.model.Request;
 import ru.chibisov.model.RequestMaterial;
 import ru.chibisov.service.RequestService;
+import ru.chibisov.service.dto.RequestDto;
+import ru.chibisov.service.dto.mapper.RequestMapper;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,31 +22,36 @@ public class RequestServiceImpl implements RequestService {
 
     private RequestDao requestDao;
     private RequestMaterialDao requestMaterialDao;
+    private RequestMapper mapper;
+
 
     @Autowired
-    public RequestServiceImpl(RequestDao requestDao, RequestMaterialDao requestMaterialDao) {
+    public RequestServiceImpl(RequestDao requestDao,
+                              RequestMaterialDao requestMaterialDao) {
         log.info("createService");
         this.requestDao = requestDao;
         this.requestMaterialDao = requestMaterialDao;
     }
 
     @Override
-    public Request getRequestById(Long id) {
+    public RequestDto getRequestById(Long id) {
         Request result = requestDao.getById(id);
         result.setMaterials(requestMaterialDao.getByRequestId(id));
-        return result;
+        return mapper.map(result);
     }
 
     @Override
-    public Request addRequest(Request request) {
-        Request result = requestDao.create(request);
-        return updateRequestMaterial(request, result);
+    public RequestDto addRequest(RequestDto requestDto) {
+        Request request = mapper.map(requestDto);
+        Request result =  requestDao.create(request);
+        return mapper.map(updateRequestMaterial(request, result));
     }
 
     @Override
-    public Request updateRequest(Request request) {
-        Request result = requestDao.update(request);
-        return updateRequestMaterial(request, result);
+    public RequestDto updateRequest(RequestDto requestDto) {
+        Request request = mapper.map(requestDto);
+        Request result =  requestDao.update(request);
+        return mapper.map(updateRequestMaterial(request, result));
     }
 
     private Request updateRequestMaterial(Request request, Request result) {

@@ -1,14 +1,19 @@
 package ru.chibisov.service;
 
 import ru.chibisov.model.Supplier;
+import ru.chibisov.service.dto.SupplierDto;
+
+import java.util.List;
 
 public interface SupplierService {
 
-    Supplier getSupplierById(Long id);
+    SupplierDto getSupplierById(Long id);
 
-    Supplier addSupplier(Supplier supplier);
+    SupplierDto addSupplier(SupplierDto supplier);
 
-    Supplier updateSupplier(Supplier supplier);
+    SupplierDto updateSupplier(SupplierDto supplier);
 
-    Supplier removeSupplier(Supplier supplier);
+    SupplierDto deleteSupplier(SupplierDto supplier);
+
+    List<SupplierDto> getAllSuppliers();
 }

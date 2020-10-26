@@ -1,12 +1,18 @@
 package ru.chibisov.service;
 
-import ru.chibisov.model.User;
+import ru.chibisov.service.dto.UserDto;
+
+import java.util.List;
 
 public interface UserService {
 
-    User getUserById(Long id);
+    UserDto getUserById(Long id);
 
-    User addUser(User user);
+    UserDto addUser(UserDto user);
 
-    User updateUser(User user);
+    UserDto updateUser(UserDto user);
+
+    UserDto deleteUser(UserDto user);
+
+    List<UserDto> getAllUsers();
 }

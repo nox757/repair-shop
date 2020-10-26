@@ -1,13 +1,14 @@
 package ru.chibisov.service;
 
 import ru.chibisov.model.Request;
+import ru.chibisov.service.dto.RequestDto;
 
 public interface RequestService {
 
-    Request getRequestById(Long id);
+    RequestDto getRequestById(Long id);
 
-    Request addRequest(Request request);
+    RequestDto addRequest(RequestDto request);
 
-    Request updateRequest(Request request);
+    RequestDto updateRequest(RequestDto request);
 
 }

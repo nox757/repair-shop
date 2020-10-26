@@ -5,9 +5,13 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.chibisov.dao.SupplierDao;
-import ru.chibisov.dao.impl.SupplierDaoImpl;
 import ru.chibisov.model.Supplier;
 import ru.chibisov.service.SupplierService;
+import ru.chibisov.service.dto.SupplierDto;
+import ru.chibisov.service.dto.mapper.SupplierMapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SupplierServiceImpl implements SupplierService {
@@ -15,31 +19,41 @@ public class SupplierServiceImpl implements SupplierService {
     private static final Logger log = LogManager.getLogger(SupplierServiceImpl.class.getName());
 
     private SupplierDao supplierDao;
+    private SupplierMapper mapper;
 
     @Autowired
-    public SupplierServiceImpl(SupplierDao supplierDao) {
+    public SupplierServiceImpl(SupplierDao supplierDao, SupplierMapper mapper) {
         log.info("createService");
         this.supplierDao = supplierDao;
+        this.mapper = mapper;
     }
 
     @Override
-    public Supplier getSupplierById(Long id) {
-        return supplierDao.getById(id);
+    public SupplierDto getSupplierById(Long id) {
+        return mapper.map(supplierDao.getById(id));
     }
 
     @Override
-    public Supplier addSupplier(Supplier supplier) {
-        return supplierDao.create(supplier);
+    public SupplierDto addSupplier(SupplierDto supplierDto) {
+        Supplier supplier = mapper.map(supplierDto);
+        return mapper.map(supplierDao.create(supplier));
     }
 
     @Override
-    public Supplier updateSupplier(Supplier supplier) {
-        return supplierDao.update(supplier);
+    public SupplierDto updateSupplier(SupplierDto supplierDto) {
+        Supplier supplier = mapper.map(supplierDto);
+        return mapper.map(supplierDao.update(supplier));
     }
 
     @Override
-    public Supplier removeSupplier(Supplier supplier) {
-        return supplierDao.delete(supplier);
+    public SupplierDto deleteSupplier(SupplierDto supplierDto) {
+        Supplier supplier = mapper.map(supplierDto);
+        return mapper.map(supplierDao.delete(supplier));
     }
 
+    @Override
+    public List<SupplierDto> getAllSuppliers() {
+        List<Supplier> suppliers = new ArrayList<>(supplierDao.getAll());
+        return mapper.map(suppliers);
+    }
 }

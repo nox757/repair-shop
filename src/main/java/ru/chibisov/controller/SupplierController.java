@@ -1,0 +1,54 @@
+package ru.chibisov.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import ru.chibisov.model.Supplier;
+import ru.chibisov.service.dto.SupplierDto;
+import ru.chibisov.service.dto.mapper.SupplierMapper;
+import ru.chibisov.service.SupplierService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/supplier")
+public class SupplierController {
+
+    private SupplierService supplierService;
+
+    @Autowired
+    public SupplierController(SupplierService supplierService) {
+        this.supplierService = supplierService;
+    }
+
+    @GetMapping
+    private List<SupplierDto> getSuppliers() {
+        return supplierService.getAllSuppliers();
+    }
+
+    @GetMapping(value = "/{id}")
+    private SupplierDto getSupplierById(@PathVariable("id") Long id) {
+        return supplierService.getSupplierById(id);
+    }
+
+    @PostMapping
+    private SupplierDto createSupplier(@RequestBody SupplierDto supplierDto) {
+        return supplierService.addSupplier(supplierDto);
+    }
+
+    @PutMapping(value = "/{id}")
+    private SupplierDto updateSupplier(@RequestBody SupplierDto supplierDto) {
+        return supplierService.updateSupplier(supplierDto);
+    }
+
+    @DeleteMapping
+    private SupplierDto deleteSupplier(@RequestBody SupplierDto supplierDto) {
+        return supplierService.deleteSupplier(supplierDto);
+    }
+}
