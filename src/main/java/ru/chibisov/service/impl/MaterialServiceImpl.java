@@ -18,12 +18,9 @@ public class MaterialServiceImpl implements MaterialService {
 
     private MaterialDao materialDao;
 
-    public MaterialServiceImpl() {
-        log.info("createService");
-    }
-
     @Autowired
-    public void setMaterialDao(MaterialDao materialDao) {
+    public MaterialServiceImpl(MaterialDao materialDao) {
+        log.info("createService");
         this.materialDao = materialDao;
     }
 

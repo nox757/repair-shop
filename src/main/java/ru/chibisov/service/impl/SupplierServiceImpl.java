@@ -16,12 +16,9 @@ public class SupplierServiceImpl implements SupplierService {
 
     private SupplierDao supplierDao;
 
-    public SupplierServiceImpl() {
-        log.info("createService");
-    }
-
     @Autowired
-    public void setSupplierDao(SupplierDaoImpl supplierDao) {
+    public SupplierServiceImpl(SupplierDao supplierDao) {
+        log.info("createService");
         this.supplierDao = supplierDao;
     }
 
