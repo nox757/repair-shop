@@ -1,7 +1,6 @@
 package ru.chibisov.service;
 
-import ru.chibisov.model.Supplier;
-import ru.chibisov.service.dto.SupplierDto;
+import ru.chibisov.controller.dto.SupplierDto;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ public interface SupplierService {
 
     SupplierDto updateSupplier(SupplierDto supplier);
 
-    SupplierDto deleteSupplier(SupplierDto supplier);
+    SupplierDto removeSupplier(SupplierDto supplier);
 
     List<SupplierDto> getAllSuppliers();
 }

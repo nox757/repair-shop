@@ -1,6 +1,4 @@
-package ru.chibisov.service.dto;
-
-import ru.chibisov.model.Material;
+package ru.chibisov.controller.dto;
 
 import java.util.Set;
 
@@ -29,7 +27,7 @@ public class SupplierDto {
     /**
      * Список постаавляемых материалов
      */
-    private Set<Material> materials;
+    private Set<MaterialDto> materials;
 
     public Long getId() {
         return id;
@@ -67,11 +65,11 @@ public class SupplierDto {
         return this;
     }
 
-    public Set<Material> getMaterials() {
+    public Set<MaterialDto> getMaterials() {
         return materials;
     }
 
-    public SupplierDto setMaterials(Set<Material> materials) {
+    public SupplierDto setMaterials(Set<MaterialDto> materials) {
         this.materials = materials;
         return this;
     }

@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.chibisov.model.Supplier;
-import ru.chibisov.service.dto.SupplierDto;
-import ru.chibisov.service.dto.mapper.SupplierMapper;
+import ru.chibisov.controller.dto.SupplierDto;
 import ru.chibisov.service.SupplierService;
 
 import java.util.List;
@@ -43,12 +41,14 @@ public class SupplierController {
     }
 
     @PutMapping(value = "/{id}")
-    private SupplierDto updateSupplier(@RequestBody SupplierDto supplierDto) {
-        return supplierService.updateSupplier(supplierDto);
+    private SupplierDto updateSupplier(@PathVariable("id") Long id,
+                                       @RequestBody SupplierDto supplierDto) {
+        return supplierService.updateSupplier(supplierDto.setId(id));
     }
 
-    @DeleteMapping
-    private SupplierDto deleteSupplier(@RequestBody SupplierDto supplierDto) {
-        return supplierService.deleteSupplier(supplierDto);
+    @DeleteMapping(value = "/{id}")
+    private SupplierDto deleteSupplier(@PathVariable("id") Long id,
+                                       @RequestBody SupplierDto supplierDto) {
+        return supplierService.removeSupplier(supplierDto.setId(id));
     }
 }

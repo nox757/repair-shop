@@ -1,8 +1,9 @@
-package ru.chibisov.service.dto.mapper;
+package ru.chibisov.controller.dto.mapper;
 
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
+import ru.chibisov.controller.dto.UserDto;
 import ru.chibisov.model.User;
-import ru.chibisov.service.dto.UserDto;
 
 import java.util.List;
 
@@ -15,4 +16,5 @@ public interface UserMapper {
 
     List<UserDto> map(List<User> users);
 
+//    @AfterMapping
 }

@@ -1,8 +1,8 @@
-package ru.chibisov.service.dto.mapper;
+package ru.chibisov.controller.dto.mapper;
 
 import org.mapstruct.Mapper;
 import ru.chibisov.model.Material;
-import ru.chibisov.service.dto.MaterialDto;
+import ru.chibisov.controller.dto.MaterialDto;
 
 import java.util.List;
 

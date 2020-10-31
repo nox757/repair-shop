@@ -1,5 +1,6 @@
 package ru.chibisov.dao;
 
+import ru.chibisov.model.Request;
 import ru.chibisov.model.RequestMaterial;
 
 import java.util.Set;

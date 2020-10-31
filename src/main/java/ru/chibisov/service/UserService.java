@@ -1,6 +1,6 @@
 package ru.chibisov.service;
 
-import ru.chibisov.service.dto.UserDto;
+import ru.chibisov.controller.dto.UserDto;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public interface UserService {
 
     UserDto updateUser(UserDto user);
 
-    UserDto deleteUser(UserDto user);
+    UserDto removeUser(UserDto user);
 
     List<UserDto> getAllUsers();
 }

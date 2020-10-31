@@ -1,9 +1,9 @@
 package ru.chibisov.service;
 
-import ru.chibisov.model.Material;
-import ru.chibisov.service.dto.MaterialDto;
+import ru.chibisov.controller.dto.MaterialDto;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface MaterialService {
 
@@ -16,5 +16,7 @@ public interface MaterialService {
     MaterialDto updateRemains(String codeName, BigDecimal value);
 
     MaterialDto removeMaterial(MaterialDto material);
+
+    List<MaterialDto> getAllMaterials();
 
 }

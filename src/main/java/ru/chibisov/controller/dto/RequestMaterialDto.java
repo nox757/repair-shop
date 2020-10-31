@@ -1,4 +1,4 @@
-package ru.chibisov.service.dto;
+package ru.chibisov.controller.dto;
 
 public class RequestMaterialDto {
 

@@ -1,8 +1,6 @@
-package ru.chibisov.service.dto;
+package ru.chibisov.controller.dto;
 
-import ru.chibisov.model.RequestMaterial;
 import ru.chibisov.model.Status;
-import ru.chibisov.model.User;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -30,14 +28,24 @@ public class RequestDto {
     private String comment;
 
     /**
-     * Мастер, выполняющий заявку
+     * ИД мастера выполняюшего заявку
      */
     private Long repairerId;
 
     /**
-     * Закзачик, создавший заявку
+     * Имя мастер, выполняющий заявку
+     */
+    private String nameRepairer;
+
+    /**
+     * ИД закзачика, создавшего заявку
      */
     private Long customerId;
+
+    /**
+     * Имя закзачик, создавший заявку
+     */
+    private String nameCustomer;
 
     /**
      * Цена за заказ-заявку
@@ -95,12 +103,30 @@ public class RequestDto {
         return this;
     }
 
+    public String getNameRepairer() {
+        return nameRepairer;
+    }
+
+    public RequestDto setNameRepairer(String nameRepairer) {
+        this.nameRepairer = nameRepairer;
+        return this;
+    }
+
     public Long getCustomerId() {
         return customerId;
     }
 
     public RequestDto setCustomerId(Long customerId) {
         this.customerId = customerId;
+        return this;
+    }
+
+    public String getNameCustomer() {
+        return nameCustomer;
+    }
+
+    public RequestDto setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
         return this;
     }
 

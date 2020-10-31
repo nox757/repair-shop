@@ -5,13 +5,14 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.chibisov.dao.MaterialDao;
-import ru.chibisov.dao.impl.MaterialDaoImpl;
 import ru.chibisov.model.Material;
 import ru.chibisov.service.MaterialService;
-import ru.chibisov.service.dto.MaterialDto;
-import ru.chibisov.service.dto.mapper.MaterialMapper;
+import ru.chibisov.controller.dto.MaterialDto;
+import ru.chibisov.controller.dto.mapper.MaterialMapper;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class MaterialServiceImpl implements MaterialService {
@@ -56,5 +57,9 @@ public class MaterialServiceImpl implements MaterialService {
         return mapper.map(materialDao.updateRemains(codeName, value));
     }
 
-
+    @Override
+    public List<MaterialDto> getAllMaterials() {
+        List<Material> materials = new ArrayList<>(materialDao.getAll());
+        return mapper.map(materials);
+    }
 }

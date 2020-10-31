@@ -9,12 +9,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.chibisov.model.User;
-import ru.chibisov.service.dto.UserDto;
-import ru.chibisov.service.dto.mapper.UserMapper;
+import ru.chibisov.controller.dto.UserDto;
 import ru.chibisov.service.UserService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -44,12 +41,14 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}")
-    private UserDto updateUser(@RequestBody UserDto userDto) {
-        return userService.updateUser(userDto);
+    private UserDto updateUser(@PathVariable("id") Long id,
+                               @RequestBody UserDto userDto) {
+        return userService.updateUser(userDto.setId(id));
     }
 
-    @DeleteMapping
-    private UserDto deleteUser(@RequestBody UserDto userDto) {
-        return userService.deleteUser(userDto);
+    @DeleteMapping(value = "/{id}")
+    private UserDto deleteUser(@PathVariable("id") Long id,
+                               @RequestBody UserDto userDto) {
+        return userService.removeUser(userDto.setId(id));
     }
 }

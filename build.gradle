@@ -33,6 +33,7 @@ dependencies {
 
     )
 
+    compile group: 'org.mapstruct', name: 'mapstruct-jdk8', version: '1.4.1.Final'
     compileOnly("org.mapstruct:mapstruct:1.4.1.Final")
     annotationProcessor "org.mapstruct:mapstruct-processor:1.4.1.Final"
 }
@@ -44,6 +45,15 @@ tasks.withType(JavaCompile) {
     ]
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs "${project.buildDir}/generated/sources/annotationProcessor/java/main"
+        }
+    }
+}
+
 clean {
     delete 'out'
+    delete 'src/main/generated'
 }
