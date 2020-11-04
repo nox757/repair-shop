@@ -4,7 +4,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.chibisov.controller.dto.RequestDto;
 import ru.chibisov.controller.dto.RequestMaterialDto;
+import ru.chibisov.controller.dto.mapper.RequestMapper;
 import ru.chibisov.controller.dto.mapper.RequestMaterialMapper;
 import ru.chibisov.dao.MaterialDao;
 import ru.chibisov.dao.RequestDao;
@@ -15,8 +17,6 @@ import ru.chibisov.model.Request;
 import ru.chibisov.model.RequestMaterial;
 import ru.chibisov.model.User;
 import ru.chibisov.service.RequestService;
-import ru.chibisov.controller.dto.RequestDto;
-import ru.chibisov.controller.dto.mapper.RequestMapper;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -35,7 +35,6 @@ public class RequestServiceImpl implements RequestService {
     private RequestMapper requestMapper;
     private RequestMaterialMapper materialMapper;
 
-    @Autowired
     public RequestServiceImpl(RequestDao requestDao,
                               UserDao userDao,
                               RequestMaterialDao requestMaterialDao,
@@ -74,9 +73,8 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public RequestDto removeRequest(RequestDto requestDto) {
-        Request request = requestMapper.map(requestDto);
-        return requestMapper.map(requestDao.delete(request));
+    public void removeRequestById(Long id) {
+        requestDao.deleteById(id);
     }
 
     @Override
@@ -94,6 +92,7 @@ public class RequestServiceImpl implements RequestService {
     /**
      * Устанавливает актуальные сущности мастера и заказчика в заявке
      * по полученным Id
+     *
      * @param request
      */
     private void setUserByIdToRequest(Request request) {
@@ -111,6 +110,7 @@ public class RequestServiceImpl implements RequestService {
      * Обновляет информацию по используемым матералам и их количеству
      * для выполнения заявки
      * Информация по материалу ищется по ИД
+     *
      * @param request
      * @param result
      * @return

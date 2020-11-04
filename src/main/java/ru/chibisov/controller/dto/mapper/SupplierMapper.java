@@ -1,8 +1,8 @@
 package ru.chibisov.controller.dto.mapper;
 
 import org.mapstruct.Mapper;
-import ru.chibisov.model.Supplier;
 import ru.chibisov.controller.dto.SupplierDto;
+import ru.chibisov.model.Supplier;
 
 import java.util.List;
 

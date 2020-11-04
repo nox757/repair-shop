@@ -1,6 +1,5 @@
 package ru.chibisov.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.chibisov.controller.dto.RequestDto;
-import ru.chibisov.model.Request;
 import ru.chibisov.service.RequestService;
 
 import java.util.List;
@@ -21,7 +19,6 @@ public class RequestController {
 
     private RequestService requestService;
 
-    @Autowired
     public RequestController(RequestService requestService) {
         this.requestService = requestService;
     }
@@ -48,8 +45,7 @@ public class RequestController {
     }
 
     @DeleteMapping(value = "/{id}")
-    private RequestDto deleteRequest(@PathVariable("id") Long id,
-                                     @RequestBody RequestDto requestDto) {
-        return requestService.removeRequest(requestDto.setId(id));
+    private void deleteRequest(@PathVariable("id") Long id) {
+        requestService.removeRequestById(id);
     }
 }

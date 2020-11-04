@@ -45,14 +45,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/user/2",
+							"raw": "localhost:8080/user/0",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"user",
-								"2"
+								"0"
 							]
 						}
 					},
@@ -87,7 +87,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 1,   \r\n    \"role\": \"CUSTOMER\", \r\n    \"name\": \"user 0\",  \r\n    \"password\": \"123\",\r\n    \"phone\": \"7977556666\", \r\n    \"email\": \"test@mail.ru\"\r\n}",
+							"raw": "{ \r\n    \"id\": 0,   \r\n    \"role\": \"CUSTOMER\", \r\n    \"name\": \"user 0\",  \r\n    \"password\": \"123\",\r\n    \"phone\": \"7977556666\", \r\n    \"email\": \"test@mail.ru\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -287,24 +287,15 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 1,   \r\n    \"role\": \"CUSTOMER\", \r\n    \"name\": \"user 0\",  \r\n    \"password\": \"123\",\r\n    \"phone\": \"7977556666\", \r\n    \"email\": \"test@mail.ru\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "localhost:8080/user/1",
+							"raw": "localhost:8080/user/5",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"user",
-								"1"
+								"5"
 							]
 						}
 					},
@@ -454,24 +445,15 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 2,   \r\n    \"codeName\": \"AA/22/00-1\", \r\n    \"name\": \"сталь_2\",  \r\n    \"price\": 523.99,\r\n    \"remains\": 150.500\r\n }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "localhost:8080/material/2",
+							"raw": "localhost:8080/material/0",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"material",
-								"2"
+								"0"
 							]
 						}
 					},
@@ -631,24 +613,15 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"orgName\": \"orgName1\",\r\n    \"nameAgent\": \"Игорь\",\r\n    \"phoneAgent\": \"79001234569\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "localhost:8080/supplier/4",
+							"raw": "localhost:8080/supplier/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"supplier",
-								"4"
+								"2"
 							]
 						}
 					},

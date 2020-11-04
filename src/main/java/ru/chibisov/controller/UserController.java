@@ -1,6 +1,5 @@
 package ru.chibisov.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,6 @@ public class UserController {
 
     private UserService userService;
 
-    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -47,8 +45,7 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/{id}")
-    private UserDto deleteUser(@PathVariable("id") Long id,
-                               @RequestBody UserDto userDto) {
-        return userService.removeUser(userDto.setId(id));
+    private void deleteUser(@PathVariable("id") Long id) {
+        userService.removeUserById(id);
     }
 }

@@ -25,5 +25,4 @@ public interface RequestMapper {
     List<RequestDto> map(List<Request> requests);
 
 
-
 }

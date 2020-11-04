@@ -1,6 +1,5 @@
 package ru.chibisov.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,6 @@ public class SupplierController {
 
     private SupplierService supplierService;
 
-    @Autowired
     public SupplierController(SupplierService supplierService) {
         this.supplierService = supplierService;
     }
@@ -47,8 +45,7 @@ public class SupplierController {
     }
 
     @DeleteMapping(value = "/{id}")
-    private SupplierDto deleteSupplier(@PathVariable("id") Long id,
-                                       @RequestBody SupplierDto supplierDto) {
-        return supplierService.removeSupplier(supplierDto.setId(id));
+    private void deleteSupplier(@PathVariable("id") Long id) {
+        supplierService.removeSupplierById(id);
     }
 }

@@ -2,7 +2,6 @@ package ru.chibisov.dao.impl;
 
 import org.springframework.stereotype.Repository;
 import ru.chibisov.dao.RequestMaterialDao;
-import ru.chibisov.model.Request;
 import ru.chibisov.model.RequestMaterial;
 
 import java.util.HashMap;

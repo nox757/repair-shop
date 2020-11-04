@@ -2,8 +2,8 @@ package ru.chibisov.controller.dto.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import ru.chibisov.model.RequestMaterial;
 import ru.chibisov.controller.dto.RequestMaterialDto;
+import ru.chibisov.model.RequestMaterial;
 
 import java.util.List;
 

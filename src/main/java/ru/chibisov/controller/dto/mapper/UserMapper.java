@@ -1,6 +1,5 @@
 package ru.chibisov.controller.dto.mapper;
 
-import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import ru.chibisov.controller.dto.UserDto;
 import ru.chibisov.model.User;

@@ -4,16 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.chibisov.controller.dto.SupplierDto;
+import ru.chibisov.controller.dto.mapper.SupplierMapper;
 import ru.chibisov.dao.MaterialDao;
 import ru.chibisov.dao.SupplierDao;
 import ru.chibisov.model.Material;
-import ru.chibisov.model.Request;
-import ru.chibisov.model.RequestMaterial;
 import ru.chibisov.model.Supplier;
-import ru.chibisov.service.MaterialService;
 import ru.chibisov.service.SupplierService;
-import ru.chibisov.controller.dto.SupplierDto;
-import ru.chibisov.controller.dto.mapper.SupplierMapper;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -30,7 +27,6 @@ public class SupplierServiceImpl implements SupplierService {
 
     private MaterialDao materialDao;
 
-    @Autowired
     public SupplierServiceImpl(SupplierDao supplierDao, SupplierMapper mapper,
                                MaterialDao materialDao) {
         log.info("createService");
@@ -58,9 +54,8 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public SupplierDto removeSupplier(SupplierDto supplierDto) {
-        Supplier supplier = mapper.map(supplierDto);
-        return mapper.map(supplierDao.delete(supplier));
+    public void removeSupplierById(Long id) {
+        supplierDao.deleteById(id);
     }
 
     @Override
@@ -71,6 +66,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     /**
      * Устанавливает актуальные данные по материалам по их Id
+     *
      * @param supplier
      */
     private void setMaterialsByIdToSupplier(Supplier supplier) {
