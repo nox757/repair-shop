@@ -2,7 +2,6 @@ package ru.chibisov.service.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.chibisov.controller.dto.RequestDto;
 import ru.chibisov.controller.dto.RequestMaterialDto;
@@ -12,6 +11,8 @@ import ru.chibisov.dao.MaterialDao;
 import ru.chibisov.dao.RequestDao;
 import ru.chibisov.dao.RequestMaterialDao;
 import ru.chibisov.dao.UserDao;
+import ru.chibisov.exception.BadDataFieldException;
+import ru.chibisov.exception.ObjectNotFoundException;
 import ru.chibisov.model.Material;
 import ru.chibisov.model.Request;
 import ru.chibisov.model.RequestMaterial;
@@ -53,6 +54,9 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public RequestDto getRequestById(Long id) {
         Request result = requestDao.getById(id);
+        if (result == null) {
+            throw new ObjectNotFoundException(String.valueOf(id));
+        }
         result.setMaterials(requestMaterialDao.getByRequestId(id));
         return requestMapper.map(result);
     }
@@ -74,7 +78,9 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public void removeRequestById(Long id) {
-        requestDao.deleteById(id);
+        if (requestDao.deleteById(id) == null) {
+            throw new ObjectNotFoundException(String.valueOf(id));
+        }
     }
 
     @Override
@@ -98,11 +104,19 @@ public class RequestServiceImpl implements RequestService {
     private void setUserByIdToRequest(Request request) {
         User repairer = request.getRepairer();
         User customer = request.getCustomer();
-        if (repairer != null) {
-            request.setRepairer(userDao.getById(repairer.getId()));
+        if (repairer != null && repairer.getId() != null) {
+            User user = userDao.getById(repairer.getId());
+            if (user == null) {
+                throw new BadDataFieldException(String.format("Not found user with id %s", repairer.getId()));
+            }
+            request.setRepairer(user);
         }
         if (customer != null) {
-            request.setCustomer(userDao.getById(customer.getId()));
+            User user = userDao.getById(customer.getId());
+            if (user == null) {
+                throw new BadDataFieldException(String.format("Not found user with id %s", customer.getId()));
+            }
+            request.setCustomer(user);
         }
     }
 
@@ -120,9 +134,10 @@ public class RequestServiceImpl implements RequestService {
             Set<RequestMaterial> requestMaterialSet = new HashSet<>(request.getMaterials());
             for (RequestMaterial requestMaterial : requestMaterialSet) {
                 requestMaterial.setRequest(result);
-                Material material = materialDao.getById(requestMaterial.getMaterial().getId());
+                Long idMaterial = requestMaterial.getMaterial().getId();
+                Material material = materialDao.getById(idMaterial);
                 if (material == null) {
-                    throw new IllegalArgumentException("Not found material by Id");
+                    throw new BadDataFieldException(String.format("Not found material with %s", idMaterial));
                 }
                 requestMaterial.setMaterial(material);
             }
@@ -130,4 +145,5 @@ public class RequestServiceImpl implements RequestService {
         }
         return result;
     }
+
 }

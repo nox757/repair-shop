@@ -1,7 +1,11 @@
 package ru.chibisov.controller;
 
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.chibisov.controller.dto.MaterialDto;
 import ru.chibisov.service.MaterialService;
+import ru.chibisov.validator.MaterialDtoValidator;
 
 import java.util.List;
 
@@ -18,9 +23,11 @@ import java.util.List;
 public class MaterialController {
 
     private MaterialService materialService;
+    private MaterialDtoValidator materialDtoValidator;
 
-    public MaterialController(MaterialService materialService) {
+    public MaterialController(MaterialService materialService, MaterialDtoValidator materialDtoValidator) {
         this.materialService = materialService;
+        this.materialDtoValidator = materialDtoValidator;
     }
 
     @GetMapping
@@ -34,18 +41,28 @@ public class MaterialController {
     }
 
     @PostMapping
-    private MaterialDto createMaterial(@RequestBody MaterialDto materialDto) {
+    private MaterialDto createMaterial(@Validated @RequestBody MaterialDto materialDto) {
         return materialService.addMaterial(materialDto);
     }
 
     @PutMapping(value = "/{id}")
     private MaterialDto updateMaterial(@PathVariable("id") Long id,
-                                       @RequestBody MaterialDto materialDto) {
+                                       @Validated @RequestBody MaterialDto materialDto) {
         return materialService.updateMaterial(materialDto.setId(id));
     }
 
     @DeleteMapping(value = "/{id}")
     private void deleteMaterial(@PathVariable("id") Long id) {
         materialService.removeMaterialById(id);
+    }
+
+    @ModelAttribute
+    public MaterialDto materialDto() {
+        return new MaterialDto();
+    }
+
+    @InitBinder(value = "materialDto")
+    private void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(materialDtoValidator);
     }
 }

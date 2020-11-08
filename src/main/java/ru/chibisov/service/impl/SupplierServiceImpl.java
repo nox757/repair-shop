@@ -2,12 +2,12 @@ package ru.chibisov.service.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.chibisov.controller.dto.SupplierDto;
 import ru.chibisov.controller.dto.mapper.SupplierMapper;
 import ru.chibisov.dao.MaterialDao;
 import ru.chibisov.dao.SupplierDao;
+import ru.chibisov.exception.ObjectNotFoundException;
 import ru.chibisov.model.Material;
 import ru.chibisov.model.Supplier;
 import ru.chibisov.service.SupplierService;
@@ -37,7 +37,11 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public SupplierDto getSupplierById(Long id) {
-        return mapper.map(supplierDao.getById(id));
+        Supplier supplier = supplierDao.getById(id);
+        if (supplier == null) {
+            throw new ObjectNotFoundException(String.valueOf(id));
+        }
+        return mapper.map(supplier);
     }
 
     @Override
@@ -55,7 +59,9 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public void removeSupplierById(Long id) {
-        supplierDao.deleteById(id);
+        if (supplierDao.deleteById(id) == null) {
+            throw new ObjectNotFoundException(String.valueOf(id));
+        }
     }
 
     @Override
