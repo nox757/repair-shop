@@ -1,20 +1,54 @@
 package ru.chibisov.model;
 
 import java.math.BigDecimal;
-import java.util.Map;
+import java.util.Set;
 
+/**
+ * Представление сущности заявка(заказ) на починку в системе
+ */
 public class Request implements Identifiable<Long> {
 
     private static final long serialVersionUID = 869367318036171304L;
 
+    /**
+     * Уникальный идентификатор заявки в системе
+     */
     private Long id;
+
+    /**
+     * Описание требуемых работ
+     */
     private String description;
+
+    /**
+     * Текущий статус заявки
+     */
     private Status status;
+
+    /**
+     * Комментарий к заявке
+     */
     private String comment;
+
+    /**
+     * Мастер, выполняющий заявку
+     */
     private User repairer;
+
+    /**
+     * Закзачик, создавший заявку
+     */
     private User customer;
+
+    /**
+     * Цена за заказ-заявку
+     */
     private BigDecimal amount;
-    private Map<Material, Double> materials;
+
+    /**
+     * Материал и количество, необходимые для починки
+     */
+    private Set<RequestMaterial> materials;
 
     public Request() {
         this.status = Status.DRAFT;
@@ -77,11 +111,11 @@ public class Request implements Identifiable<Long> {
         this.amount = amount;
     }
 
-    public Map<Material, Double> getMaterials() {
+    public Set<RequestMaterial> getMaterials() {
         return materials;
     }
 
-    public void setMaterials(Map<Material, Double> materials) {
+    public void setMaterials(Set<RequestMaterial> materials) {
         this.materials = materials;
     }
 

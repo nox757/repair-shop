@@ -1,14 +1,40 @@
 package ru.chibisov.model;
 
+/**
+ * Представление сущности пользователя в системе
+ */
 public class User implements Identifiable<Long> {
 
     private static final long serialVersionUID = 4546946133334325941L;
 
+    /**
+     * Уникальный идентификатор пользователя в системе
+     */
     private Long id;
+
+    /**
+     * Роль пользователя системы
+     */
     private Role role;
+
+    /**
+     * Логин пользователя
+     */
     private String name;
+
+    /**
+     * Хеш пароля
+     */
     private String password;
+
+    /**
+     * Контактный телефон
+     */
     private String phone;
+
+    /**
+     * Адрес эл. почты
+     */
     private String email;
 
     public User() {

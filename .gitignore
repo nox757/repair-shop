@@ -4,3 +4,5 @@
 /**/*.iml
 /target
 /**/*logs
+/out/
+/src/main/generated/
