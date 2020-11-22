@@ -2,11 +2,11 @@ package ru.chibisov.service.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.chibisov.controller.dto.MaterialDto;
 import ru.chibisov.controller.dto.mapper.MaterialMapper;
 import ru.chibisov.dao.MaterialDao;
+import ru.chibisov.exception.ObjectNotFoundException;
 import ru.chibisov.model.Material;
 import ru.chibisov.service.MaterialService;
 
@@ -30,7 +30,11 @@ public class MaterialServiceImpl implements MaterialService {
 
     @Override
     public MaterialDto getMaterialById(Long id) {
-        return mapper.map(materialDao.getById(id));
+        Material material = materialDao.getById(id);
+        if (material == null) {
+            throw new ObjectNotFoundException(String.valueOf(id));
+        }
+        return mapper.map(material);
     }
 
     @Override
@@ -47,7 +51,9 @@ public class MaterialServiceImpl implements MaterialService {
 
     @Override
     public void removeMaterialById(Long id) {
-        materialDao.deleteById(id);
+        if (materialDao.deleteById(id) == null) {
+            throw new ObjectNotFoundException(String.valueOf(id));
+        }
     }
 
     @Override

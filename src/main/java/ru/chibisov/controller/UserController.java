@@ -1,7 +1,11 @@
 package ru.chibisov.controller;
 
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.chibisov.controller.dto.UserDto;
 import ru.chibisov.service.UserService;
+import ru.chibisov.validator.UserDtoValidator;
 
 import java.util.List;
 
@@ -18,9 +23,11 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
+    private UserDtoValidator userDtoValidator;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserDtoValidator userDtoValidator) {
         this.userService = userService;
+        this.userDtoValidator = userDtoValidator;
     }
 
     @GetMapping
@@ -34,13 +41,13 @@ public class UserController {
     }
 
     @PostMapping
-    private UserDto createUser(@RequestBody UserDto userDto) {
+    private UserDto createUser(@Validated @RequestBody UserDto userDto) {
         return userService.addUser(userDto);
     }
 
     @PutMapping(value = "/{id}")
     private UserDto updateUser(@PathVariable("id") Long id,
-                               @RequestBody UserDto userDto) {
+                               @Validated @RequestBody UserDto userDto) {
         return userService.updateUser(userDto.setId(id));
     }
 
@@ -48,4 +55,15 @@ public class UserController {
     private void deleteUser(@PathVariable("id") Long id) {
         userService.removeUserById(id);
     }
+
+    @ModelAttribute
+    public UserDto userDto() {
+        return new UserDto();
+    }
+
+    @InitBinder(value = "userDto")
+    private void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(userDtoValidator);
+    }
+
 }

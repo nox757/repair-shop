@@ -1,7 +1,11 @@
 package ru.chibisov.controller;
 
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.chibisov.controller.dto.RequestDto;
 import ru.chibisov.service.RequestService;
+import ru.chibisov.validator.RequestDtoValidator;
 
 import java.util.List;
 
@@ -18,9 +23,11 @@ import java.util.List;
 public class RequestController {
 
     private RequestService requestService;
+    private RequestDtoValidator requestDtoValidator;
 
-    public RequestController(RequestService requestService) {
+    public RequestController(RequestService requestService, RequestDtoValidator requestDtoValidator) {
         this.requestService = requestService;
+        this.requestDtoValidator = requestDtoValidator;
     }
 
     @GetMapping
@@ -34,18 +41,28 @@ public class RequestController {
     }
 
     @PostMapping
-    private RequestDto createRequest(@RequestBody RequestDto requestDto) {
+    private RequestDto createRequest(@Validated @RequestBody RequestDto requestDto) {
         return requestService.addRequest(requestDto);
     }
 
     @PutMapping(value = "/{id}")
     private RequestDto updateRequest(@PathVariable("id") Long id,
-                                     @RequestBody RequestDto requestDto) {
+                                     @Validated @RequestBody RequestDto requestDto) {
         return requestService.updateRequest(requestDto.setId(id));
     }
 
     @DeleteMapping(value = "/{id}")
     private void deleteRequest(@PathVariable("id") Long id) {
         requestService.removeRequestById(id);
+    }
+
+    @ModelAttribute
+    public RequestDto requestDto() {
+        return new RequestDto();
+    }
+
+    @InitBinder(value = "requestDto")
+    private void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(requestDtoValidator);
     }
 }

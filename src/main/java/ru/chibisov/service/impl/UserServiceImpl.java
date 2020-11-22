@@ -2,11 +2,11 @@ package ru.chibisov.service.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.chibisov.controller.dto.UserDto;
 import ru.chibisov.controller.dto.mapper.UserMapper;
 import ru.chibisov.dao.UserDao;
+import ru.chibisov.exception.ObjectNotFoundException;
 import ru.chibisov.model.User;
 import ru.chibisov.service.UserService;
 
@@ -29,7 +29,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserById(Long id) {
-        return mapper.map(userDao.getById(id));
+        User user = userDao.getById(id);
+        if (user == null) {
+            throw new ObjectNotFoundException(String.valueOf(id));
+        }
+        return mapper.map(user);
     }
 
     @Override
@@ -46,7 +50,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void removeUserById(Long id) {
-        userDao.deleteById(id);
+        if (userDao.deleteById(id) == null) {
+            throw new ObjectNotFoundException(String.valueOf(id));
+        }
     }
 
     @Override
