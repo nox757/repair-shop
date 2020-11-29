@@ -3,6 +3,7 @@ package ru.chibisov.dao;
 import ru.chibisov.model.Material;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Интерфейс управления персистетным состоянием объектов с типом Материал {@link Material}
@@ -18,12 +19,11 @@ public interface MaterialDao extends GenericDao<Material, Long> {
     Material getByCodeName(String codeName);
 
     /**
-     * Обновляет информацию об остатках
+     * Возвращает список материалов конкретного поставщика
      *
-     * @param codeName код артикула
-     * @param remains  новое значения остатка
-     * @return обновленный материал
+     * @param supplierId иденитификатор поставщика
+     * @return найденные матераилы
      */
-    Material updateRemains(String codeName, BigDecimal remains);
+    List<Material> getBySupplierId(Long supplierId);
 
 }

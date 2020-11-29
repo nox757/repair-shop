@@ -29,6 +29,11 @@ public class MaterialDto {
      */
     private BigDecimal remains;
 
+    /**
+     * Идентификатор поставщика в системе
+     */
+    private Long supplierId;
+
     public Long getId() {
         return id;
     }
@@ -71,6 +76,15 @@ public class MaterialDto {
 
     public MaterialDto setRemains(BigDecimal remains) {
         this.remains = remains;
+        return this;
+    }
+
+    public Long getSupplierId() {
+        return supplierId;
+    }
+
+    public MaterialDto setSupplierId(Long supplierId) {
+        this.supplierId = supplierId;
         return this;
     }
 }

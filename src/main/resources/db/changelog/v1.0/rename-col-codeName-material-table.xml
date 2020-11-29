@@ -1,0 +1,19 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="20201125-rename-col-codeName-material-table" author="Chibisov Andrey">
+        <preConditions onFail="HALT">
+            <tableExists tableName="material"/>
+        </preConditions>
+        <renameColumn columnDataType="varchar(255)"
+                      newColumnName="code_name"
+                      oldColumnName="codeName"
+                      remarks="Кодовое имя материала"
+                      schemaName="public"
+                      tableName="material"/>
+        <comment>Задача по переименованию колонки - Postgres чувствитлен к регистру</comment>
+    </changeSet>
+</databaseChangeLog>

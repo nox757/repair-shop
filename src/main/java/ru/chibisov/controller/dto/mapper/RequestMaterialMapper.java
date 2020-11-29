@@ -10,12 +10,12 @@ import java.util.List;
 @Mapper
 public interface RequestMaterialMapper {
 
-    @Mapping(target = "requestId", source = "request.id")
-    @Mapping(target = "materialId", source = "material.id")
+    @Mapping(target = "requestId", source = "id.requestId")
+    @Mapping(target = "materialId", source = "id.materialId")
     RequestMaterialDto map(RequestMaterial requestMaterial);
 
-    @Mapping(target = "request.id", source = "requestId")
-    @Mapping(target = "material.id", source = "materialId")
+    @Mapping(target = "id.materialId", source = "materialId")
+    @Mapping(target = "id.requestId", source = "requestId")
     RequestMaterial map(RequestMaterialDto requestMaterialDto);
 
     List<RequestMaterialDto> map(List<RequestMaterial> requestMaterials);

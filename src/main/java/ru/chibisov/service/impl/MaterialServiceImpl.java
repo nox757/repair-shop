@@ -3,6 +3,7 @@ package ru.chibisov.service.impl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.chibisov.controller.dto.MaterialDto;
 import ru.chibisov.controller.dto.mapper.MaterialMapper;
 import ru.chibisov.dao.MaterialDao;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class MaterialServiceImpl implements MaterialService {
 
     private static final Logger log = LogManager.getLogger(MaterialServiceImpl.class.getName());
@@ -29,6 +31,7 @@ public class MaterialServiceImpl implements MaterialService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public MaterialDto getMaterialById(Long id) {
         Material material = materialDao.getById(id);
         if (material == null) {
@@ -57,13 +60,15 @@ public class MaterialServiceImpl implements MaterialService {
     }
 
     @Override
-    public MaterialDto updateRemains(String codeName, BigDecimal value) {
-        return mapper.map(materialDao.updateRemains(codeName, value));
+    @Transactional(readOnly = true)
+    public List<MaterialDto> getAllMaterials() {
+        List<Material> materials = new ArrayList<>(materialDao.getAll());
+        return mapper.map(materials);
     }
 
     @Override
-    public List<MaterialDto> getAllMaterials() {
-        List<Material> materials = new ArrayList<>(materialDao.getAll());
+    public List<MaterialDto> getAllMaterialsBySupplierId(Long supplierId) {
+        List<Material> materials = new ArrayList<>(materialDao.getBySupplierId(supplierId));
         return mapper.map(materials);
     }
 }

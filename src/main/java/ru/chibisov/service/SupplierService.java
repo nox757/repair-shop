@@ -1,5 +1,6 @@
 package ru.chibisov.service;
 
+import ru.chibisov.controller.dto.MaterialDto;
 import ru.chibisov.controller.dto.SupplierDto;
 
 import java.util.List;
