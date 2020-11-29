@@ -37,7 +37,7 @@
                              referencedTableName="user"
                              referencedColumnNames="user_id"/>
             </column>
-            <column name="amount" type="decimal" remarks="Сумма заявки-заказа">
+            <column name="amount" type="numeric(20,4)" remarks="Сумма заявки-заказа">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -51,7 +51,7 @@
         </preConditions>
 
         <createTable tableName="request_material" remarks="Таблица материалы заявки">
-            <column name="quantity" type="decimal" remarks="Количество материала в заявке">
+            <column name="quantity" type="numeric(20,4)" remarks="Количество материала в заявке">
                 <constraints nullable="false"/>
             </column>
             <column name="material_id" type="bigint" remarks="Идентификатор используемого материала">

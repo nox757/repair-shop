@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.chibisov.controller.dto.ResponseError;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -22,6 +23,9 @@ public class GlobalExceptionHandler {
     @Value("${message.exception.common.servererror}")
     private String commonServerErrorMessage;
 
+    @Value("${system.name:api_requests}")
+    private String systemName;
+
     @ExceptionHandler(BadDataFieldException.class)
     public ResponseEntity<ResponseError> badDataFieldException(BadDataFieldException exception) {
         log.debug(exception.getLocalizedMessage(), exception);
@@ -29,9 +33,22 @@ public class GlobalExceptionHandler {
                 UUID.randomUUID(),
                 "Bad Field Exception",
                 exception.getLocalizedMessage(),
-                "mySystem"
+                systemName
         );
         return new ResponseEntity<>(error, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BadUrlRequestException.class)
+    public ResponseEntity<ResponseError> requestHandlingNoHandlerFound(HttpServletRequest req, BadUrlRequestException exception) {
+        String message = String.format("%s - from %s", exception.getLocalizedMessage(), req.getRequestURL().toString());
+        log.debug(message, exception);
+        ResponseError error = new ResponseError(
+                UUID.randomUUID(),
+                "Bad request",
+                message,
+                systemName
+        );
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ObjectNotFoundException.class)
@@ -41,7 +58,7 @@ public class GlobalExceptionHandler {
                 UUID.randomUUID(),
                 "Object Not Found",
                 exception.getLocalizedMessage(),
-                "mySystem"
+                systemName
         );
         return new ResponseEntity<>(error, new HttpHeaders(), HttpStatus.NOT_FOUND);
     }
@@ -54,7 +71,7 @@ public class GlobalExceptionHandler {
                         new ResponseError(UUID.randomUUID(),
                                 ex.getCode(),
                                 ex.getDefaultMessage(),
-                                "mySystem"
+                                systemName
                         )
                 ).collect(Collectors.toList());
         return new ResponseEntity<>(errors, new HttpHeaders(), HttpStatus.BAD_REQUEST);
@@ -67,7 +84,7 @@ public class GlobalExceptionHandler {
                 UUID.randomUUID(),
                 "unknown",
                 commonServerErrorMessage,
-                "mySystem"
+                systemName
         );
         return new ResponseEntity<>(error, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }

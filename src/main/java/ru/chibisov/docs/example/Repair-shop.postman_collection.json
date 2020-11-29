@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "47af03cf-8caa-4735-a1fa-2ea443c4a610",
-		"name": "Repair-shop",
+		"_postman_id": "06218fc4-d9cf-4653-99b9-59b91f266716",
+		"name": "Repair-shop Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -14,7 +14,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ccc8040f-c3b8-4804-b3d7-1f6bb435755a",
+								"id": "91ce2c22-8fdb-4107-bc98-f02335255cdd",
 								"exec": [
 									""
 								],
@@ -26,13 +26,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/user/",
+							"raw": "localhost:8080/api/v1/users/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"users",
 								""
 							]
 						}
@@ -45,13 +47,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/user/0",
+							"raw": "localhost:8080/api/v1/users/0",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"users",
 								"0"
 							]
 						}
@@ -64,7 +68,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "33dae8e0-e92a-43d4-bafa-ee13f4769a32",
+								"id": "26d406b9-f90a-40b5-b3bf-f52993cef2e1",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 1,   \r",
@@ -95,13 +99,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/user/",
+							"raw": "localhost:8080/api/v1/users/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"users",
 								""
 							]
 						}
@@ -169,7 +175,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "440856a7-e7c2-4f7e-90e1-4f470d4ebfe1",
+								"id": "766f629e-f34e-466a-86b4-87d95f577c36",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 3,   \r",
@@ -199,13 +205,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/user/",
+							"raw": "localhost:8080/api/v1/users/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"users",
 								""
 							]
 						}
@@ -218,7 +226,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9dd95034-6355-4ec3-a6f0-d914a0dbc041",
+								"id": "a533e90f-f9a9-485f-9992-99ce7fa7560f",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 0,   \r",
@@ -248,13 +256,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/user/0",
+							"raw": "localhost:8080/api/v1/users/0",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"users",
 								"0"
 							]
 						}
@@ -267,7 +277,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "367cede9-ba74-48c0-ab77-ccc33a2694ac",
+								"id": "6e7af48f-2853-4329-bc95-f1903a83ed3c",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 1,   \r",
@@ -288,13 +298,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/user/5",
+							"raw": "localhost:8080/api/v1/users/5",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"users",
 								"5"
 							]
 						}
@@ -313,13 +325,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/material",
+							"raw": "localhost:8080/api/v1/materials",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"material"
+								"api",
+								"v1",
+								"materials"
 							]
 						}
 					},
@@ -331,13 +345,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/material/2",
+							"raw": "localhost:8080/api/v1/materials/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"material",
+								"api",
+								"v1",
+								"materials",
 								"2"
 							]
 						}
@@ -350,7 +366,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "11a5415f-46cb-4ba8-bc2f-6dfcb618abc2",
+								"id": "8a112e68-7b44-4592-ab52-de82bb6916c4",
 								"exec": [
 									""
 								],
@@ -371,13 +387,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/material/",
+							"raw": "localhost:8080/api/v1/materials/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"material",
+								"api",
+								"v1",
+								"materials",
 								""
 							]
 						}
@@ -399,13 +417,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/material/",
+							"raw": "localhost:8080/api/v1/materials/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"material",
+								"api",
+								"v1",
+								"materials",
 								""
 							]
 						}
@@ -427,13 +447,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/material/2",
+							"raw": "localhost:8080/api/v1/materials/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"material",
+								"api",
+								"v1",
+								"materials",
 								"2"
 							]
 						}
@@ -446,13 +468,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/material/0",
+							"raw": "localhost:8080/api/v1/materials/0",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"material",
+								"api",
+								"v1",
+								"materials",
 								"0"
 							]
 						}
@@ -471,13 +495,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/supplier",
+							"raw": "localhost:8080/api/v1/suppliers",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"supplier"
+								"api",
+								"v1",
+								"suppliers"
 							]
 						}
 					},
@@ -489,13 +515,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/supplier/0",
+							"raw": "localhost:8080/api/v1/suppliers/0",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"supplier",
+								"api",
+								"v1",
+								"suppliers",
 								"0"
 							]
 						}
@@ -508,7 +536,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f8fd32b9-3344-43b8-95e9-db3295162a2e",
+								"id": "0846acd3-eb55-4878-aa4a-8b8130bca69a",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 1,   \r",
@@ -539,13 +567,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/supplier/",
+							"raw": "localhost:8080/api/v1/suppliers/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"supplier",
+								"api",
+								"v1",
+								"suppliers",
 								""
 							]
 						}
@@ -567,13 +597,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/supplier/",
+							"raw": "localhost:8080/api/v1/suppliers/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"supplier",
+								"api",
+								"v1",
+								"suppliers",
 								""
 							]
 						}
@@ -595,13 +627,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/supplier/2",
+							"raw": "localhost:8080/api/v1/suppliers/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"supplier",
+								"api",
+								"v1",
+								"suppliers",
 								"2"
 							]
 						}
@@ -614,13 +648,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/supplier/2",
+							"raw": "localhost:8080/api/v1/suppliers/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"supplier",
+								"api",
+								"v1",
+								"suppliers",
 								"2"
 							]
 						}
@@ -639,13 +675,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/request/",
+							"raw": "localhost:8080/api/v1/requests/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"request",
+								"api",
+								"v1",
+								"requests",
 								""
 							]
 						}
@@ -658,13 +696,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/request/2",
+							"raw": "localhost:8080/api/v1/requests/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"request",
+								"api",
+								"v1",
+								"requests",
 								"2"
 							]
 						}
@@ -677,7 +717,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "43091827-09a5-47d4-99b7-206eb52e92b7",
+								"id": "de97c2d5-ba8c-4804-993f-3c8b9305b4e1",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 1,   \r",
@@ -700,7 +740,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 0,   \r\n    \"description\": \"быстро починить\", \r\n    \"status\": \"DRAFT\",  \r\n    \"comment\": \"\",\r\n    \"customerId\": 0,   \r\n    \"amount\": 1015.52\r\n }",
+							"raw": "{ \r\n    \"id\": 0,   \r\n    \"description\": \"быстро починить\", \r\n    \"status\": \"DRAFT\",  \r\n    \"comment\": \"\",\r\n    \"customerId\": 0,      \r\n    \"nameCustomer\": \"fff\",  \r\n    \"amount\": 1015.52\r\n }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -708,13 +748,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/request/",
+							"raw": "localhost:8080/api/v1/requests/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"request",
+								"api",
+								"v1",
+								"requests",
 								""
 							]
 						}
@@ -728,7 +770,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"description\": \"быстро починить 2\",\r\n    \"status\": \"DRAFT\",\r\n    \"comment\": \"\",\r\n    \"repairerId\": null,\r\n    \"customerId\": 0,\r\n    \"amount\": 1015.52,\r\n    \"materials\": [\r\n    {\r\n            \"id\": 1,\r\n            \"materialId\": 0,\r\n            \"quantity\": 25.23\r\n        },\r\n        {\r\n            \"id\": 1,\r\n            \"materialId\": 2,\r\n            \"quantity\": 10.22\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"description\": \"быстро починить 2\",\r\n    \"status\": \"DRAFT\",\r\n    \"comment\": \"\",\r\n    \"repairerId\": null,\r\n    \"customerId\": 0,\r\n    \"nameCustomer\": \"name\",\r\n    \"amount\": 1015.52,\r\n    \"materials\": [\r\n    {\r\n            \"id\": 1,\r\n            \"materialId\": 0,\r\n            \"quantity\": 25.23\r\n        },\r\n        {\r\n            \"id\": 1,\r\n            \"materialId\": 2,\r\n            \"quantity\": 10.22\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -736,13 +778,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/request/",
+							"raw": "localhost:8080/api/v1/requests/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"request",
+								"api",
+								"v1",
+								"requests",
 								""
 							]
 						}
@@ -764,13 +808,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/request/2",
+							"raw": "localhost:8080/api/v1/requests/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"request",
+								"api",
+								"v1",
+								"requests",
 								"2"
 							]
 						}
@@ -792,13 +838,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/request/0",
+							"raw": "localhost:8080/api/v1/requests/0",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"request",
+								"api",
+								"v1",
+								"requests",
 								"0"
 							]
 						}

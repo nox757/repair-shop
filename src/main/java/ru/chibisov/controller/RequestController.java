@@ -1,5 +1,6 @@
 package ru.chibisov.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,14 +13,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 import ru.chibisov.controller.dto.RequestDto;
+import ru.chibisov.exception.BadUrlRequestException;
 import ru.chibisov.service.RequestService;
 import ru.chibisov.validator.RequestDtoValidator;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/request")
+@RequestMapping("/api/v1/requests")
 public class RequestController {
 
     private RequestService requestService;
@@ -41,13 +45,18 @@ public class RequestController {
     }
 
     @PostMapping
-    private RequestDto createRequest(@Validated @RequestBody RequestDto requestDto) {
-        return requestService.addRequest(requestDto);
+    private ResponseEntity<RequestDto> createRequest(@Validated @RequestBody RequestDto requestDto, UriComponentsBuilder componentsBuilder) {
+        RequestDto result = requestService.addRequest(requestDto);
+        URI uri = componentsBuilder.path("/api/v1/requests/" + result.getId()).buildAndExpand(result).toUri();
+        return ResponseEntity.created(uri).body(result);
     }
 
     @PutMapping(value = "/{id}")
     private RequestDto updateRequest(@PathVariable("id") Long id,
                                      @Validated @RequestBody RequestDto requestDto) {
+        if (!requestDto.getId().equals(id)) {
+            throw new BadUrlRequestException("Path and body ID must be equal");
+        }
         return requestService.updateRequest(requestDto.setId(id));
     }
 

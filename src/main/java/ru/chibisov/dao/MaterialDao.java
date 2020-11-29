@@ -4,6 +4,9 @@ import ru.chibisov.model.Material;
 
 import java.math.BigDecimal;
 
+/**
+ * Интерфейс управления персистетным состоянием объектов с типом Материал {@link Material}
+ */
 public interface MaterialDao extends GenericDao<Material, Long> {
 
     /**

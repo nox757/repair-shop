@@ -22,10 +22,10 @@
             <column name="name" type="varchar(255)" remarks="Название материала">
                 <constraints nullable="false"/>
             </column>
-            <column name="price" type="decimal" remarks="Цена за единицу">
+            <column name="price" type="numeric(20,2)" remarks="Цена за единицу">
                 <constraints nullable="false"/>
             </column>
-            <column name="remains" type="decimal" remarks="Текущий остаток">
+            <column name="remains" type="numeric(20,4)" remarks="Текущий остаток">
                 <constraints nullable="true"/>
             </column>
             <column name="supplier_id" type="bigint" remarks="Идентификатор поставщика">
