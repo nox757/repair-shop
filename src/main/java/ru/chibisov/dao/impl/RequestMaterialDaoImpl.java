@@ -19,7 +19,7 @@ public class RequestMaterialDaoImpl extends AbstractDao<RequestMaterial, Long> i
     public Set<RequestMaterial> getByRequestId(Long requestId) {
         return elements.values()
                 .stream()
-                .filter(requestMaterial -> requestMaterial.getContractId().equals(requestId))
+                .filter(requestMaterial -> requestMaterial.getRequest().getId().equals(requestId))
                 .collect(Collectors.toSet());
     }
 }

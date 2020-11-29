@@ -1,19 +1,53 @@
 package ru.chibisov.service;
 
-import ru.chibisov.model.Material;
+import ru.chibisov.controller.dto.MaterialDto;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+/**
+ * Интерфейс взаимодействия с материалом
+ */
 public interface MaterialService {
 
-    Material getMaterialById(Long id);
+    /**
+     * Возвращает найденный материал по идентификатору
+     * @param id
+     * @return
+     */
+    MaterialDto getMaterialById(Long id);
 
-    Material addMaterial(Material material);
+    /**
+     * Добавляет новый материал
+     */
+    MaterialDto addMaterial(MaterialDto material);
 
-    Material updateMaterial(Material material);
+    /**
+     * Обновляет существующий существующий материал
+     * @param material
+     * @return
+     */
+    MaterialDto updateMaterial(MaterialDto material);
 
-    Material updateRemains(String codeName, BigDecimal value);
+    /**
+     * Обновляет остатки матераилов по кодовому имени
+     * @param codeName кодовое имя матерала
+     * @param value новое значение остатка
+     * @return обновленная данные материала
+     */
+    MaterialDto updateRemains(String codeName, BigDecimal value);
 
-    Material removeMaterial(Material material);
+    /**
+     * Удаляет материал по его иденитификатору
+     * @param id
+     * @return
+     */
+    void removeMaterialById(Long id);
+
+    /**
+     * Возвращает список всех материалов
+     * @return
+     */
+    List<MaterialDto> getAllMaterials();
 
 }

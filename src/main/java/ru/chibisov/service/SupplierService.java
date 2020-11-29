@@ -1,14 +1,44 @@
 package ru.chibisov.service;
 
-import ru.chibisov.model.Supplier;
+import ru.chibisov.controller.dto.SupplierDto;
 
+import java.util.List;
+
+/**
+ * Интерфейс взаимодействия с поставщиками материалов
+ */
 public interface SupplierService {
 
-    Supplier getSupplierById(Long id);
+    /**
+     * Возвращает поставщика по его идентификатору
+     * @param id
+     * @return
+     */
+    SupplierDto getSupplierById(Long id);
 
-    Supplier addSupplier(Supplier supplier);
+    /**
+     * Добавляет нового поставщика
+     * @param supplier
+     * @return
+     */
+    SupplierDto addSupplier(SupplierDto supplier);
 
-    Supplier updateSupplier(Supplier supplier);
+    /**
+     * Обновляет существующего поставщика
+     * @param supplier
+     * @return
+     */
+    SupplierDto updateSupplier(SupplierDto supplier);
 
-    Supplier removeSupplier(Supplier supplier);
+    /**
+     * Удаляет поставщика по его идентификатору
+     * @param id
+     */
+    void removeSupplierById(Long id);
+
+    /**
+     * Возвращает список всех поставщиков
+     * @return
+     */
+    List<SupplierDto> getAllSuppliers();
 }

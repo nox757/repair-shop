@@ -17,7 +17,7 @@ public class RequestMaterial implements Identifiable<Long> {
     /**
      * Уникальный идентификатор заявки в системе
      */
-    private Long requestId;
+    private Request request;
 
     /**
      * Материал, используемый в заявке
@@ -29,7 +29,6 @@ public class RequestMaterial implements Identifiable<Long> {
      */
     private Double quantity;
 
-
     @Override
     public Long getId() {
         return id;
@@ -39,12 +38,12 @@ public class RequestMaterial implements Identifiable<Long> {
         this.id = id;
     }
 
-    public Long getContractId() {
-        return requestId;
+    public Request getRequest() {
+        return request;
     }
 
-    public void setContractId(Long requestId) {
-        this.requestId = requestId;
+    public void setRequest(Request request) {
+        this.request = request;
     }
 
     public Material getMaterial() {
@@ -71,15 +70,15 @@ public class RequestMaterial implements Identifiable<Long> {
         RequestMaterial that = (RequestMaterial) o;
 
         if (!Objects.equals(id, that.id)) return false;
-        if (!Objects.equals(requestId, that.requestId)) return false;
-        return Objects.equals(material, that.material);
+        if (!Objects.equals(request, that.request)) return false;
+        return Objects.equals(material.getId(), that.material.getId());
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
-        result = 31 * result + (material != null ? material.hashCode() : 0);
+        result = 31 * result + (request != null ? request.hashCode() : 0);
+        result = 31 * result + (material.getId() != null ? material.getId().hashCode() : 0);
         return result;
     }
 
@@ -87,7 +86,7 @@ public class RequestMaterial implements Identifiable<Long> {
     public String toString() {
         return "RequestMaterial{" +
                 "id=" + id +
-                ", requestId=" + requestId +
+                ", request=" + request +
                 ", material=" + material +
                 ", quantity=" + quantity +
                 '}';

@@ -1,4 +1,10 @@
-Учебный проект для изучения Spring
+**Запуск в idea**
+
+Для корректного запуска, управление градлом передать Idea
+
+` File | Settings | Build, Execution, Deployment | Build Tools | Gradle > Build and Running`
+
+**Учебный проект для изучения Spring**
 
 Предметная область - Ремонтная мастерская.
 
