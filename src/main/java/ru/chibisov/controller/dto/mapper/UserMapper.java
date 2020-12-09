@@ -15,5 +15,4 @@ public interface UserMapper {
 
     List<UserDto> map(List<User> users);
 
-//    @AfterMapping
 }

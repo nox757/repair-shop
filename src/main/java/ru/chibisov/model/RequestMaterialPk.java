@@ -1,12 +1,22 @@
 package ru.chibisov.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Embeddable
 public class RequestMaterialPk implements Serializable {
 
+    @Column(name = "material_id")
     protected Long materialId;
+
+    @Column(name = "request_id")
     protected Long requestId;
+
+    public RequestMaterialPk() {
+
+    }
 
     public RequestMaterialPk(Long materialId, Long requestId) {
         this.materialId = materialId;
@@ -19,6 +29,16 @@ public class RequestMaterialPk implements Serializable {
 
     public Long getRequestId() {
         return requestId;
+    }
+
+    public RequestMaterialPk setMaterialId(Long materialId) {
+        this.materialId = materialId;
+        return this;
+    }
+
+    public RequestMaterialPk setRequestId(Long requestId) {
+        this.requestId = requestId;
+        return this;
     }
 
     @Override
