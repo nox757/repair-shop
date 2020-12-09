@@ -1,7 +1,7 @@
 package ru.chibisov.service.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.chibisov.controller.dto.UserDto;
@@ -18,7 +18,7 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    private static final Logger log = LogManager.getLogger(UserServiceImpl.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class.getName());
 
     private UserDao userDao;
     private UserMapper mapper;

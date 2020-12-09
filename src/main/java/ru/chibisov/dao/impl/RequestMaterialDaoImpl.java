@@ -1,9 +1,7 @@
 package ru.chibisov.dao.impl;
 
-import liquibase.exception.DatabaseException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.context.annotation.Primary;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -18,7 +16,6 @@ import ru.chibisov.model.RequestMaterial;
 import ru.chibisov.model.RequestMaterialPk;
 
 import java.sql.ResultSet;
-import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -29,7 +26,7 @@ import java.util.Set;
 @Repository
 public class RequestMaterialDaoImpl implements RequestMaterialDao {
 
-    private static final Logger log = LogManager.getLogger(RequestMaterialDaoImpl.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(RequestMaterialDaoImpl.class.getName());
 
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedJdbcTemplate;

@@ -1,8 +1,7 @@
 package ru.chibisov.dao.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.context.annotation.Primary;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -28,7 +27,7 @@ import java.util.Map;
 @Repository
 public class RequestDaoImpl implements RequestDao {
 
-    private static final Logger log = LogManager.getLogger(RequestDaoImpl.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(RequestDaoImpl.class.getName());
 
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedJdbcTemplate;

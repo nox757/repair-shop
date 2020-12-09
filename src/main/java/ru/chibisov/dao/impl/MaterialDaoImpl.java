@@ -1,8 +1,7 @@
 package ru.chibisov.dao.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.context.annotation.Primary;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Repository;
 import ru.chibisov.dao.MaterialDao;
 import ru.chibisov.model.Material;
 
-import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -28,7 +26,7 @@ import java.util.stream.Collectors;
 @Repository
 public class MaterialDaoImpl implements MaterialDao {
 
-    private static final Logger log = LogManager.getLogger(MaterialDaoImpl.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(MaterialDaoImpl.class.getName());
 
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedJdbcTemplate;
