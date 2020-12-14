@@ -1,5 +1,6 @@
 package ru.chibisov.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -27,7 +28,7 @@ public class RequestMaterial implements Identifiable<Long> {
     /**
      * Количество материала для заявки
      */
-    private Double quantity;
+    private BigDecimal quantity;
 
     @Override
     public Long getId() {
@@ -54,11 +55,11 @@ public class RequestMaterial implements Identifiable<Long> {
         this.material = material;
     }
 
-    public Double getQuantity() {
+    public BigDecimal getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Double quantity) {
+    public void setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
     }
 

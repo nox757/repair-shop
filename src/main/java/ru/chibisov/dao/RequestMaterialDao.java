@@ -4,6 +4,9 @@ import ru.chibisov.model.RequestMaterial;
 
 import java.util.Set;
 
+/**
+ * Интерфейс управления персистетным состоянием объектов с типом Материал-количество, используемый в заявке {@link RequestMaterial}
+ */
 public interface RequestMaterialDao extends GenericDao<RequestMaterial, Long> {
 
     /**

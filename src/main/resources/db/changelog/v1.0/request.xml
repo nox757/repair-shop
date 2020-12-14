@@ -1,0 +1,79 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="20201114-create-request" author="Chibisov Andrey">
+        <preConditions onFail="HALT">
+            <tableExists tableName="user"/>
+        </preConditions>
+
+        <createTable tableName="request" remarks="Таблица заявки">
+            <column name="request_id" type="bigint" autoIncrement="true" remarks="Идентификатор записи">
+                <constraints primaryKey="true"
+                             primaryKeyName="request_pk"
+                             nullable="false"/>
+            </column>
+
+            <column name="description" type="varchar(1024)" remarks="Описание требуемых работ">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(255)" remarks="Текущий статус заявки">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" type="varchar(255)" remarks="Комментарий к заявке">
+                <constraints nullable="false"/>
+            </column>
+            <column name="repairer_id" type="bigint" remarks="Идентификатор пользоваателя-мастера">
+                <constraints nullable="true"
+                             foreignKeyName="request_repairer_user_id_fk"
+                             referencedTableName="user"
+                             referencedColumnNames="user_id"/>
+            </column>
+            <column name="customer_id" type="bigint" remarks="Идентификатор пользоваателя-заказчика">
+                <constraints nullable="false"
+                             foreignKeyName="request_customer_user_id_fk"
+                             referencedTableName="user"
+                             referencedColumnNames="user_id"/>
+            </column>
+            <column name="amount" type="numeric(20,4)" remarks="Сумма заявки-заказа">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <comment>Задача по созданию заявки</comment>
+    </changeSet>
+
+    <changeSet id="20201114-create-request-material" author="Chibisov Andrey">
+        <preConditions onFail="HALT">
+            <tableExists tableName="material"/>
+            <tableExists tableName="request"/>
+        </preConditions>
+
+        <createTable tableName="request_material" remarks="Таблица материалы заявки">
+            <column name="quantity" type="numeric(20,4)" remarks="Количество материала в заявке">
+                <constraints nullable="false"/>
+            </column>
+            <column name="material_id" type="bigint" remarks="Идентификатор используемого материала">
+                <constraints nullable="true"
+                             foreignKeyName="request_material_material_id_fk"
+                             referencedTableName="material"
+                             referencedColumnNames="material_id"/>
+            </column>
+            <column name="request_id" type="bigint" remarks="Идентификатор заявки">
+                <constraints nullable="false"
+                             foreignKeyName="request_material_request_id_fk"
+                             referencedTableName="request"
+                             referencedColumnNames="request_id"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="material_id, request_id"
+                       constraintName="request_material_pk"
+                       tableName="request_material"
+                       validate="true"/>
+
+        <comment>Задача по созданию связи материалов с заявкой</comment>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,29 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="20201114-create-supplier" author="Chibisov Andrey">
+        <createTable tableName="supplier" remarks="Таблица поставщиков">
+            <column name="supplier_id" type="bigint" autoIncrement="true" remarks="Идентификатор записи">
+                <constraints primaryKey="true"
+                             primaryKeyName="supplier_pk"
+                             nullable="false"/>
+            </column>
+
+            <column name="org_name" type="varchar(255)" remarks="Название организации поставщика">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name_agent" type="varchar(255)" remarks="ФИО менеджера">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_agent" type="varchar(255)" remarks="Контактный телефон менеджера">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <comment>Задача по созданию поставщиков</comment>
+    </changeSet>
+
+</databaseChangeLog>

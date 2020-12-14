@@ -1,5 +1,6 @@
 package ru.chibisov.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,14 +13,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 import ru.chibisov.controller.dto.MaterialDto;
+import ru.chibisov.exception.BadUrlRequestException;
 import ru.chibisov.service.MaterialService;
 import ru.chibisov.validator.MaterialDtoValidator;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/material")
+@RequestMapping("/api/v1/materials")
 public class MaterialController {
 
     private MaterialService materialService;
@@ -41,13 +45,18 @@ public class MaterialController {
     }
 
     @PostMapping
-    private MaterialDto createMaterial(@Validated @RequestBody MaterialDto materialDto) {
-        return materialService.addMaterial(materialDto);
+    private ResponseEntity<MaterialDto> createMaterial(@Validated @RequestBody MaterialDto materialDto, UriComponentsBuilder componentsBuilder) {
+        MaterialDto result = materialService.addMaterial(materialDto);
+        URI uri = componentsBuilder.path("/api/v1/materials/" + result.getId()).buildAndExpand(result).toUri();
+        return ResponseEntity.created(uri).body(result);
     }
 
     @PutMapping(value = "/{id}")
     private MaterialDto updateMaterial(@PathVariable("id") Long id,
                                        @Validated @RequestBody MaterialDto materialDto) {
+        if (!materialDto.getId().equals(id)) {
+            throw new BadUrlRequestException("Path and body ID must be equal");
+        }
         return materialService.updateMaterial(materialDto.setId(id));
     }
 

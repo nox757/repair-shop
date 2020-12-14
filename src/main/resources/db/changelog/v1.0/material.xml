@@ -1,0 +1,46 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="20201114-create-material" author="Chibisov Andrey">
+        <preConditions onFail="HALT">
+            <tableExists tableName="supplier"/>
+        </preConditions>
+
+        <createTable tableName="material" remarks="Таблица материалов">
+            <column name="material_id" type="bigint" autoIncrement="true" remarks="Идентификатор записи">
+                <constraints primaryKey="true"
+                             primaryKeyName="material_pk"
+                             nullable="false"/>
+            </column>
+
+            <column name="codeName" type="varchar(255)" remarks="Кодовое имя материала">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="Название материала">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="numeric(20,2)" remarks="Цена за единицу">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remains" type="numeric(20,4)" remarks="Текущий остаток">
+                <constraints nullable="true"/>
+            </column>
+            <column name="supplier_id" type="bigint" remarks="Идентификатор поставщика">
+                <constraints nullable="false"
+                             foreignKeyName="material_supplier_fk"
+                             referencedTableName="supplier"
+                             referencedColumnNames="supplier_id"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint constraintName="material-code-name-unique-constraint"
+                             tableName="material"
+                             columnNames="supplier_id, codeName"/>
+
+        <comment>Задача по созданию материалов</comment>
+    </changeSet>
+
+</databaseChangeLog>

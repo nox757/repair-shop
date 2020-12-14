@@ -12,8 +12,7 @@ public class CustomAsyncExceptionHandler implements AsyncUncaughtExceptionHandle
 
     @Override
     public void handleUncaughtException(Throwable throwable, Method method, Object... obj) {
-        log.error("Exception message - " + throwable.getMessage());
-        log.error("Method name - " + method.getName());
+        log.error(String.format("Exception message - %s \n Method name - %s", throwable.getMessage(), method.getName()));
     }
 }
 

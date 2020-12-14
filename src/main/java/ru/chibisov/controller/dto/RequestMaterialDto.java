@@ -1,5 +1,7 @@
 package ru.chibisov.controller.dto;
 
+import java.math.BigDecimal;
+
 public class RequestMaterialDto {
 
     /**
@@ -20,7 +22,7 @@ public class RequestMaterialDto {
     /**
      * Количество материала для заявки
      */
-    private Double quantity;
+    private BigDecimal quantity;
 
     public Long getId() {
         return id;
@@ -49,11 +51,11 @@ public class RequestMaterialDto {
         return this;
     }
 
-    public Double getQuantity() {
+    public BigDecimal getQuantity() {
         return quantity;
     }
 
-    public RequestMaterialDto setQuantity(Double quantity) {
+    public RequestMaterialDto setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
         return this;
     }
