@@ -1,7 +1,7 @@
 package ru.chibisov.service.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.chibisov.controller.dto.MaterialDto;
@@ -11,7 +11,6 @@ import ru.chibisov.exception.ObjectNotFoundException;
 import ru.chibisov.model.Material;
 import ru.chibisov.service.MaterialService;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ import java.util.List;
 @Transactional
 public class MaterialServiceImpl implements MaterialService {
 
-    private static final Logger log = LogManager.getLogger(MaterialServiceImpl.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(MaterialServiceImpl.class.getName());
 
     private MaterialDao materialDao;
     private MaterialMapper mapper;

@@ -1,7 +1,7 @@
 package ru.chibisov.service.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.chibisov.controller.dto.SupplierDto;
@@ -10,20 +10,18 @@ import ru.chibisov.controller.dto.mapper.SupplierMapper;
 import ru.chibisov.dao.MaterialDao;
 import ru.chibisov.dao.SupplierDao;
 import ru.chibisov.exception.ObjectNotFoundException;
-import ru.chibisov.model.Material;
 import ru.chibisov.model.Supplier;
 import ru.chibisov.service.SupplierService;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @Transactional
 public class SupplierServiceImpl implements SupplierService {
 
-    private static final Logger log = LogManager.getLogger(SupplierServiceImpl.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(SupplierServiceImpl.class.getName());
 
     private SupplierDao supplierDao;
     private SupplierMapper mapper;

@@ -26,16 +26,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/users/",
+							"raw": "localhost:8080/repair-shop/api/v1/users",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
-								"users",
-								""
+								"users"
 							]
 						}
 					},
@@ -47,12 +47,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/users/1",
+							"raw": "localhost:8080/repair-shop/api/v1/users/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"users",
@@ -99,12 +100,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/users/",
+							"raw": "localhost:8080/repair-shop/api/v1/users/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"users",
@@ -205,12 +207,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/users/",
+							"raw": "localhost:8080/repair-shop/api/v1/users/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"users",
@@ -256,12 +259,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/users/1",
+							"raw": "localhost:8080/repair-shop/api/v1/users/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"users",
@@ -298,12 +302,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/users/3",
+							"raw": "localhost:8080/repair-shop/api/v1/users/3",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"users",
@@ -325,12 +330,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/suppliers",
+							"raw": "localhost:8080/repair-shop/api/v1/suppliers",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"suppliers"
@@ -345,12 +351,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/1",
+							"raw": "localhost:8080/repair-shop/api/v1/suppliers/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"suppliers",
@@ -397,12 +404,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/",
+							"raw": "localhost:8080/repair-shop/api/v1/suppliers/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"suppliers",
@@ -427,12 +435,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/",
+							"raw": "localhost:8080/repair-shop/api/v1/suppliers/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"suppliers",
@@ -457,12 +466,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/2",
+							"raw": "localhost:8080/repair-shop/api/v1/suppliers/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"suppliers",
@@ -478,12 +488,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/3",
+							"raw": "localhost:8080/repair-shop/api/v1/suppliers/3",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"suppliers",
@@ -499,16 +510,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/2/materials",
+							"raw": "localhost:8080/repair-shop/api/v1/suppliers/1/materials",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"suppliers",
-								"2",
+								"1",
 								"materials"
 							]
 						}
@@ -527,12 +539,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/materials",
+							"raw": "localhost:8080/repair-shop/api/v1/materials",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"materials"
@@ -547,12 +560,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/materials/2",
+							"raw": "localhost:8080/repair-shop/api/v1/materials/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"materials",
@@ -589,12 +603,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/materials/",
+							"raw": "localhost:8080/repair-shop/api/v1/materials/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"materials",
@@ -619,12 +634,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/materials/",
+							"raw": "localhost:8080/repair-shop/api/v1/materials/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"materials",
@@ -649,12 +665,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/materials/2",
+							"raw": "localhost:8080/repair-shop/api/v1/materials/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"materials",
@@ -670,16 +687,17 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/materials/4",
+							"raw": "localhost:8080/repair-shop/api/v1/materials/3",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"materials",
-								"4"
+								"3"
 							]
 						}
 					},
@@ -697,12 +715,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/requests/",
+							"raw": "localhost:8080/repair-shop/api/v1/requests/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"requests",
@@ -718,12 +737,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/requests/2",
+							"raw": "localhost:8080/repair-shop/api/v1/requests/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"requests",
@@ -770,12 +790,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/requests/",
+							"raw": "localhost:8080/repair-shop/api/v1/requests/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"requests",
@@ -800,12 +821,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/requests/",
+							"raw": "localhost:8080/repair-shop/api/v1/requests/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"requests",
@@ -830,12 +852,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/requests/4",
+							"raw": "localhost:8080/repair-shop/api/v1/requests/4",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"requests",
@@ -852,7 +875,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"description\": \"быстро починить 2\",\r\n    \"status\": \"DRAFT\",\r\n    \"comment\": \"\",\r\n    \"repairerId\": null,\r\n    \"nameRepairer\": null,\r\n    \"customerId\": 1,\r\n    \"nameCustomer\": \"dd\",\r\n    \"amount\": 1015.52,\r\n    \"materials\": [\r\n        {\r\n            \"requestId\": 2,\r\n            \"materialId\": 2,\r\n            \"quantity\": 25.23\r\n        },\r\n        {\r\n            \"requestId\": 2,\r\n            \"materialId\": 2,\r\n            \"quantity\": 20.23\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"description\": \"быстро починить 2\",\r\n    \"status\": \"DRAFT\",\r\n    \"comment\": \"\",\r\n    \"repairerId\": null,\r\n    \"nameRepairer\": null,\r\n    \"customerId\": 1,\r\n    \"nameCustomer\": \"dd\",\r\n    \"amount\": 1015.52,\r\n    \"materials\": [\r\n        {\r\n            \"requestId\": 2,\r\n            \"materialId\": 2,\r\n            \"quantity\": 25.23\r\n        },\r\n        {\r\n            \"requestId\": 2,\r\n            \"materialId\": 1,\r\n            \"quantity\": 20.23\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -860,12 +883,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/requests/2",
+							"raw": "localhost:8080/repair-shop/api/v1/requests/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"requests",
@@ -890,12 +914,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/requests/4",
+							"raw": "localhost:8080/repair-shop/api/v1/requests/4",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"repair-shop",
 								"api",
 								"v1",
 								"requests",

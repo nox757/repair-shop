@@ -1,11 +1,10 @@
 package ru.chibisov.service.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.chibisov.controller.dto.RequestDto;
-import ru.chibisov.controller.dto.RequestMaterialDto;
 import ru.chibisov.controller.dto.mapper.RequestMapper;
 import ru.chibisov.controller.dto.mapper.RequestMaterialMapper;
 import ru.chibisov.dao.MaterialDao;
@@ -27,7 +26,7 @@ import java.util.Set;
 @Transactional
 public class RequestServiceImpl implements RequestService {
 
-    private static final Logger log = LogManager.getLogger(RequestServiceImpl.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(RequestServiceImpl.class.getName());
 
     private RequestDao requestDao;
     private UserDao userDao;
@@ -108,7 +107,7 @@ public class RequestServiceImpl implements RequestService {
         if (request.getMaterials() != null && !request.getMaterials().isEmpty()) {
             Set<RequestMaterial> requestMaterialSet = new HashSet<>(request.getMaterials());
             for (RequestMaterial requestMaterial : requestMaterialSet) {
-                    requestMaterial.setId(new RequestMaterialPk(requestMaterial.getId().getMaterialId(), result.getId()));
+                requestMaterial.setId(new RequestMaterialPk(requestMaterial.getId().getMaterialId(), result.getId()));
             }
             result.setMaterials((Set<RequestMaterial>) requestMaterialDao.addAll(requestMaterialSet));
         }
