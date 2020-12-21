@@ -6,24 +6,15 @@ import java.util.Objects;
 /**
  * Сущность материал-количество, используемый в заявке.
  */
-public class RequestMaterial implements Identifiable<Long> {
+public class RequestMaterial implements Identifiable<RequestMaterialPk> {
 
     private static final long serialVersionUID = -2377172869257359548L;
 
     /**
-     * Уникальный идентификатор записи в системе
+     * Уникальный идентификатор записи в системе,
+     * состоящий из идентификтора заявки и материала используемого в конкретной заявке
      */
-    private Long id;
-
-    /**
-     * Уникальный идентификатор заявки в системе
-     */
-    private Request request;
-
-    /**
-     * Материал, используемый в заявке
-     */
-    private Material material;
+    private RequestMaterialPk requestMaterialPk;
 
     /**
      * Количество материала для заявки
@@ -31,28 +22,12 @@ public class RequestMaterial implements Identifiable<Long> {
     private BigDecimal quantity;
 
     @Override
-    public Long getId() {
-        return id;
+    public RequestMaterialPk getId() {
+        return requestMaterialPk;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Request getRequest() {
-        return request;
-    }
-
-    public void setRequest(Request request) {
-        this.request = request;
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
+    public void setId(RequestMaterialPk requestMaterialPk) {
+        this.requestMaterialPk = requestMaterialPk;
     }
 
     public BigDecimal getQuantity() {
@@ -70,25 +45,20 @@ public class RequestMaterial implements Identifiable<Long> {
 
         RequestMaterial that = (RequestMaterial) o;
 
-        if (!Objects.equals(id, that.id)) return false;
-        if (!Objects.equals(request, that.request)) return false;
-        return Objects.equals(material.getId(), that.material.getId());
+        if (!Objects.equals(requestMaterialPk, that.requestMaterialPk))
+            return false;
+        return Objects.equals(quantity, that.quantity);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (request != null ? request.hashCode() : 0);
-        result = 31 * result + (material.getId() != null ? material.getId().hashCode() : 0);
-        return result;
+        return requestMaterialPk != null ? requestMaterialPk.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "RequestMaterial{" +
-                "id=" + id +
-                ", request=" + request +
-                ", material=" + material +
+                "requestMaterialPk=" + requestMaterialPk +
                 ", quantity=" + quantity +
                 '}';
     }

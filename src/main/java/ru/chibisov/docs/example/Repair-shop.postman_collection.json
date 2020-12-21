@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "06218fc4-d9cf-4653-99b9-59b91f266716",
-		"name": "Repair-shop Copy",
+		"_postman_id": "47af03cf-8caa-4735-a1fa-2ea443c4a610",
+		"name": "Repair-shop",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -14,7 +14,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "91ce2c22-8fdb-4107-bc98-f02335255cdd",
+								"id": "ccc8040f-c3b8-4804-b3d7-1f6bb435755a",
 								"exec": [
 									""
 								],
@@ -47,7 +47,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/users/0",
+							"raw": "localhost:8080/api/v1/users/1",
 							"host": [
 								"localhost"
 							],
@@ -56,7 +56,7 @@
 								"api",
 								"v1",
 								"users",
-								"0"
+								"1"
 							]
 						}
 					},
@@ -68,7 +68,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "26d406b9-f90a-40b5-b3bf-f52993cef2e1",
+								"id": "33dae8e0-e92a-43d4-bafa-ee13f4769a32",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 1,   \r",
@@ -91,7 +91,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 0,   \r\n    \"role\": \"CUSTOMER\", \r\n    \"name\": \"user 0\",  \r\n    \"password\": \"123\",\r\n    \"phone\": \"7977556666\", \r\n    \"email\": \"test@mail.ru\"\r\n}",
+							"raw": "{  \r\n    \"role\": \"CUSTOMER\", \r\n    \"name\": \"user 1\",  \r\n    \"password\": \"123\",\r\n    \"phone\": \"7977556666\", \r\n    \"email\": \"test@mail.ru\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -175,7 +175,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "766f629e-f34e-466a-86b4-87d95f577c36",
+								"id": "440856a7-e7c2-4f7e-90e1-4f470d4ebfe1",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 3,   \r",
@@ -197,7 +197,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 3,   \r\n    \"role\": \"REPAIRER\", \r\n    \"name\": \"user 0\",  \r\n    \"password\": \"123\",\r\n    \"phone\": \"7977556666\", \r\n    \"email\": \"test@mail.ru\"\r\n}",
+							"raw": "{   \r\n    \"role\": \"REPAIRER\", \r\n    \"name\": \"user 2\",  \r\n    \"password\": \"123\",\r\n    \"phone\": \"7977556666\", \r\n    \"email\": \"test2@mail.ru\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -226,7 +226,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a533e90f-f9a9-485f-9992-99ce7fa7560f",
+								"id": "9dd95034-6355-4ec3-a6f0-d914a0dbc041",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 0,   \r",
@@ -248,7 +248,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 0,   \r\n    \"role\": \"CUSTOMER\", \r\n    \"name\": \"user 1\",  \r\n    \"password\": \"1234\",\r\n    \"phone\": \"7977556660\", \r\n    \"email\": \"test_new@mail.ru\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"role\": \"CUSTOMER\",\r\n    \"name\": \"user 1v2\",\r\n    \"password\": \"1234\",\r\n    \"phone\": \"7977556666\",\r\n    \"email\": \"test@mail.ru\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -256,7 +256,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/users/0",
+							"raw": "localhost:8080/api/v1/users/1",
 							"host": [
 								"localhost"
 							],
@@ -265,7 +265,7 @@
 								"api",
 								"v1",
 								"users",
-								"0"
+								"1"
 							]
 						}
 					},
@@ -277,7 +277,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6e7af48f-2853-4329-bc95-f1903a83ed3c",
+								"id": "367cede9-ba74-48c0-ab77-ccc33a2694ac",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 1,   \r",
@@ -298,7 +298,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/users/5",
+							"raw": "localhost:8080/api/v1/users/3",
 							"host": [
 								"localhost"
 							],
@@ -307,7 +307,209 @@
 								"api",
 								"v1",
 								"users",
-								"5"
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "suppliers",
+			"item": [
+				{
+					"name": "All suppliers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/suppliers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"suppliers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Supplier By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/suppliers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"suppliers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Supplier 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f8fd32b9-3344-43b8-95e9-db3295162a2e",
+								"exec": [
+									"let jsonBody = { \r",
+									"    \"id\": 1,   \r",
+									"    \"role\": \"CUSTOMER\", \r",
+									"    \"name\": \"user 3\",  \r",
+									"    \"password\": \"123\",\r",
+									"    \"phone\": \"7977556666\", \r",
+									"    \"email\": \"test@mail.ru\"\r",
+									"    };\r",
+									"postman.setEnvironmentVariable(\"savedData\", JSON.stringify(jsonBody));\r",
+									"console.log(postman.getEnvironmentVariable(\"savedData\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orgName\": \"orgName1\",\r\n    \"nameAgent\": \"Коля\",\r\n    \"phoneAgent\": \"79001234569\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/suppliers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"suppliers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Supplier 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orgName\": \"orgName1\",\r\n    \"nameAgent\": \"Игорь\",\r\n    \"phoneAgent\": \"79001234569\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/suppliers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"suppliers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Supplier",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"orgName\": \"orgName22\",\r\n    \"nameAgent\": \"Коля2\",\r\n    \"phoneAgent\": \"79001234569\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/suppliers/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"suppliers",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Supplier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/suppliers/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"suppliers",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Supplier Material",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/suppliers/2/materials",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"suppliers",
+								"2",
+								"materials"
 							]
 						}
 					},
@@ -366,7 +568,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8a112e68-7b44-4592-ab52-de82bb6916c4",
+								"id": "11a5415f-46cb-4ba8-bc2f-6dfcb618abc2",
 								"exec": [
 									""
 								],
@@ -379,7 +581,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 0,   \r\n    \"codeName\": \"AA/22/00-1\", \r\n    \"name\": \"кожа\",  \r\n    \"price\": 123.01,\r\n    \"remains\": 250.5\r\n }",
+							"raw": "{   \r\n    \"codeName\": \"AA/22/00-152\", \r\n    \"name\": \"кожа\",  \r\n    \"price\": 123.01,\r\n    \"remains\": 250.5,\r\n    \"supplierId\": 1\r\n }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -409,7 +611,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 2,   \r\n    \"codeName\": \"AA/22/00-1\", \r\n    \"name\": \"сталь\",  \r\n    \"price\": 523.99,\r\n    \"remains\": 150.500\r\n }",
+							"raw": "{\r\n    \"codeName\": \"AA/22/00-21\",\r\n    \"name\": \"сталь\",\r\n    \"price\": 523.99,\r\n    \"remains\": 150.500,\r\n    \"supplierId\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -439,7 +641,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 2,   \r\n    \"codeName\": \"AA/22/11-1\", \r\n    \"name\": \"сталь_2\",  \r\n    \"price\": 523.99,\r\n    \"remains\": 150.500\r\n }",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"codeName\": \"AA/22/00-154\",\r\n    \"name\": \"сталь02\",\r\n    \"price\": 523.99,\r\n    \"remains\": 155.5000,\r\n    \"supplierId\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -468,7 +670,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v1/materials/0",
+							"raw": "localhost:8080/api/v1/materials/4",
 							"host": [
 								"localhost"
 							],
@@ -477,187 +679,7 @@
 								"api",
 								"v1",
 								"materials",
-								"0"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "suppliers",
-			"item": [
-				{
-					"name": "All suppliers",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/v1/suppliers",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"suppliers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Supplier By Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"suppliers",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Supplier 1",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "0846acd3-eb55-4878-aa4a-8b8130bca69a",
-								"exec": [
-									"let jsonBody = { \r",
-									"    \"id\": 1,   \r",
-									"    \"role\": \"CUSTOMER\", \r",
-									"    \"name\": \"user 3\",  \r",
-									"    \"password\": \"123\",\r",
-									"    \"phone\": \"7977556666\", \r",
-									"    \"email\": \"test@mail.ru\"\r",
-									"    };\r",
-									"postman.setEnvironmentVariable(\"savedData\", JSON.stringify(jsonBody));\r",
-									"console.log(postman.getEnvironmentVariable(\"savedData\"));\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"orgName\": \"orgName1\",\r\n    \"nameAgent\": \"Коля\",\r\n    \"phoneAgent\": \"79001234569\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"suppliers",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Supplier 2",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"orgName\": \"orgName1\",\r\n    \"nameAgent\": \"Игорь\",\r\n    \"phoneAgent\": \"79001234569\",\r\n    \"materials\": [\r\n        {\r\n            \"id\": 0,\r\n            \"codeName\": \"AA/22/00-1\"\r\n        },\r\n        {\r\n            \"id\": 2,\r\n             \"codeName\": \"AA/22/11-1\"\r\n        }\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"suppliers",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Supplier",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"orgName\": \"orgName12\",\r\n    \"nameAgent\": \"Коля\",\r\n    \"phoneAgent\": \"79001234569\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/2",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"suppliers",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Supplier",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/v1/suppliers/2",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"suppliers",
-								"2"
+								"4"
 							]
 						}
 					},
@@ -717,7 +739,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "de97c2d5-ba8c-4804-993f-3c8b9305b4e1",
+								"id": "43091827-09a5-47d4-99b7-206eb52e92b7",
 								"exec": [
 									"let jsonBody = { \r",
 									"    \"id\": 1,   \r",
@@ -740,7 +762,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 0,   \r\n    \"description\": \"быстро починить\", \r\n    \"status\": \"DRAFT\",  \r\n    \"comment\": \"\",\r\n    \"customerId\": 0,      \r\n    \"nameCustomer\": \"fff\",  \r\n    \"amount\": 1015.52\r\n }",
+							"raw": "{  \r\n    \"description\": \"быстро починить\", \r\n    \"status\": \"DRAFT\",  \r\n    \"comment\": \"\",\r\n    \"customerId\": 1,\r\n    \"nameCustomer\": \"dd\",   \r\n    \"amount\": 1015.52\r\n }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -770,7 +792,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"description\": \"быстро починить 2\",\r\n    \"status\": \"DRAFT\",\r\n    \"comment\": \"\",\r\n    \"repairerId\": null,\r\n    \"customerId\": 0,\r\n    \"nameCustomer\": \"name\",\r\n    \"amount\": 1015.52,\r\n    \"materials\": [\r\n    {\r\n            \"id\": 1,\r\n            \"materialId\": 0,\r\n            \"quantity\": 25.23\r\n        },\r\n        {\r\n            \"id\": 1,\r\n            \"materialId\": 2,\r\n            \"quantity\": 10.22\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"description\": \"быстро починить 22459\",\r\n    \"status\": \"DRAFT\",\r\n    \"comment\": \"\",\r\n    \"repairerId\": null,\r\n    \"customerId\": 1,\r\n    \"nameCustomer\": \"dd\",\r\n    \"amount\": 1015.52,\r\n    \"materials\": [\r\n        {\r\n            \"materialId\": 1,\r\n            \"quantity\": 25.24\r\n        },\r\n        {\r\n            \"materialId\": 2,\r\n            \"quantity\": 25.23\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -800,7 +822,37 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"id\": 2,   \r\n    \"codeName\": \"AA/22/00-1\", \r\n    \"name\": \"сталь_2\",  \r\n    \"price\": 523.99,\r\n    \"remains\": 150.500\r\n }",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"description\": \"быстро починить\",\r\n    \"status\": \"DRAFT\",\r\n    \"comment\": \"\",\r\n    \"repairerId\": null,\r\n    \"nameRepairer\": null,\r\n    \"customerId\": 1,\r\n    \"nameCustomer\": \"dd\",\r\n    \"amount\": 1015.52,\r\n    \"materials\": [\r\n        {\r\n            \"requestId\": 4,\r\n            \"materialId\": 2,\r\n            \"quantity\": 2.23\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/requests/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"requests",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Request With Material",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"description\": \"быстро починить 2\",\r\n    \"status\": \"DRAFT\",\r\n    \"comment\": \"\",\r\n    \"repairerId\": null,\r\n    \"nameRepairer\": null,\r\n    \"customerId\": 1,\r\n    \"nameCustomer\": \"dd\",\r\n    \"amount\": 1015.52,\r\n    \"materials\": [\r\n        {\r\n            \"requestId\": 2,\r\n            \"materialId\": 2,\r\n            \"quantity\": 25.23\r\n        },\r\n        {\r\n            \"requestId\": 2,\r\n            \"materialId\": 2,\r\n            \"quantity\": 20.23\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -838,7 +890,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/requests/0",
+							"raw": "localhost:8080/api/v1/requests/4",
 							"host": [
 								"localhost"
 							],
@@ -847,7 +899,7 @@
 								"api",
 								"v1",
 								"requests",
-								"0"
+								"4"
 							]
 						}
 					},

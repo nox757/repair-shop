@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+import ru.chibisov.controller.dto.MaterialDto;
 import ru.chibisov.controller.dto.SupplierDto;
 import ru.chibisov.exception.BadUrlRequestException;
+import ru.chibisov.service.MaterialService;
 import ru.chibisov.service.SupplierService;
 import ru.chibisov.validator.SupplierDtoValidator;
 
@@ -28,10 +30,12 @@ public class SupplierController {
 
     private SupplierService supplierService;
     private SupplierDtoValidator supplierDtoValidator;
+    private MaterialService materialService;
 
-    public SupplierController(SupplierService supplierService, SupplierDtoValidator supplierDtoValidator) {
+    public SupplierController(SupplierService supplierService, SupplierDtoValidator supplierDtoValidator, MaterialService materialService) {
         this.supplierService = supplierService;
         this.supplierDtoValidator = supplierDtoValidator;
+        this.materialService = materialService;
     }
 
     @GetMapping
@@ -63,6 +67,11 @@ public class SupplierController {
     @DeleteMapping(value = "/{id}")
     private void deleteSupplier(@PathVariable("id") Long id) {
         supplierService.removeSupplierById(id);
+    }
+
+    @GetMapping(value = "/{id}/materials")
+    private List<MaterialDto> getMaterialsBySupplierId(@PathVariable("id") Long id) {
+        return materialService.getAllMaterialsBySupplierId(id);
     }
 
     @ModelAttribute

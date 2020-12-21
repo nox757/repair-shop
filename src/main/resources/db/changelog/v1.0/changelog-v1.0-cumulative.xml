@@ -8,5 +8,7 @@
     <include file="supplier.xml" relativeToChangelogFile="true"/>
     <include file="material.xml" relativeToChangelogFile="true"/>
     <include file="request.xml" relativeToChangelogFile="true"/>
+    <include file="rename-user-table.xml" relativeToChangelogFile="true"/>
+    <include file="rename-col-codeName-material-table.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

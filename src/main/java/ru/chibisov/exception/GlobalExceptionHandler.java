@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
     @Value("${message.exception.common.servererror}")
     private String commonServerErrorMessage;
 
-    @Value("${system.name:api_requests}")
+    @Value("${system.name:repair-shop}")
     private String systemName;
 
     @ExceptionHandler(BadDataFieldException.class)

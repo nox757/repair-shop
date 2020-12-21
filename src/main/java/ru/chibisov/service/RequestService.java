@@ -42,11 +42,4 @@ public interface RequestService {
      * @return
      */
     List<RequestDto> getAllRequests();
-
-    /**
-     * Добавляет новые материалы к заявке
-     * @return обновленную заявку с прикрепленнымы к ней материалами
-     */
-    List<RequestDto> addMaterials(List<RequestMaterialDto> materialDtos);
-
 }

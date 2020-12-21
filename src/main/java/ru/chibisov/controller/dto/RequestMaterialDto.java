@@ -5,11 +5,6 @@ import java.math.BigDecimal;
 public class RequestMaterialDto {
 
     /**
-     * Уникальный идентификатор записи в системе
-     */
-    private Long id;
-
-    /**
      * Уникальный идентификатор заявки в системе
      */
     private Long requestId;
@@ -23,15 +18,6 @@ public class RequestMaterialDto {
      * Количество материала для заявки
      */
     private BigDecimal quantity;
-
-    public Long getId() {
-        return id;
-    }
-
-    public RequestMaterialDto setId(Long id) {
-        this.id = id;
-        return this;
-    }
 
     public Long getRequestId() {
         return requestId;

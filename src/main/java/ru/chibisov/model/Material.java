@@ -35,6 +35,11 @@ public class Material implements Identifiable<Long> {
      */
     private BigDecimal remains;
 
+    /**
+     * Идентификатор поставщика в системе
+     */
+    private Long supplierId;
+
     @Override
     public Long getId() {
         return id;
@@ -74,6 +79,14 @@ public class Material implements Identifiable<Long> {
 
     public void setRemains(BigDecimal remains) {
         this.remains = remains;
+    }
+
+    public Long getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(Long supplierId) {
+        this.supplierId = supplierId;
     }
 
     @Override

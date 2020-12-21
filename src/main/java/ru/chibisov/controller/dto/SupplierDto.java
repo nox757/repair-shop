@@ -24,11 +24,6 @@ public class SupplierDto {
      */
     private String phoneAgent;
 
-    /**
-     * Список постаавляемых материалов
-     */
-    private Set<MaterialDto> materials;
-
     public Long getId() {
         return id;
     }
@@ -65,12 +60,4 @@ public class SupplierDto {
         return this;
     }
 
-    public Set<MaterialDto> getMaterials() {
-        return materials;
-    }
-
-    public SupplierDto setMaterials(Set<MaterialDto> materials) {
-        this.materials = materials;
-        return this;
-    }
 }

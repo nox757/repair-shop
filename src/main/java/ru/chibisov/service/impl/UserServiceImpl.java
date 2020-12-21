@@ -3,6 +3,7 @@ package ru.chibisov.service.impl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.chibisov.controller.dto.UserDto;
 import ru.chibisov.controller.dto.mapper.UserMapper;
 import ru.chibisov.dao.UserDao;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private static final Logger log = LogManager.getLogger(UserServiceImpl.class.getName());
@@ -28,6 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public UserDto getUserById(Long id) {
         User user = userDao.getById(id);
         if (user == null) {
@@ -56,6 +59,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<UserDto> getAllUsers() {
         List<User> users = new ArrayList<>(userDao.getAll());
         return mapper.map(users);

@@ -30,14 +30,6 @@ public interface MaterialService {
     MaterialDto updateMaterial(MaterialDto material);
 
     /**
-     * Обновляет остатки матераилов по кодовому имени
-     * @param codeName кодовое имя матерала
-     * @param value новое значение остатка
-     * @return обновленная данные материала
-     */
-    MaterialDto updateRemains(String codeName, BigDecimal value);
-
-    /**
      * Удаляет материал по его иденитификатору
      * @param id
      * @return
@@ -49,5 +41,11 @@ public interface MaterialService {
      * @return
      */
     List<MaterialDto> getAllMaterials();
+
+    /**
+     * Возвращает список всех материалов указанного поставщика
+     * @return
+     */
+    List<MaterialDto> getAllMaterialsBySupplierId(Long supplierId);
 
 }
