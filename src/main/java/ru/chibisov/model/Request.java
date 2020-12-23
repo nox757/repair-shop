@@ -23,7 +23,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "request")
-public class Request implements Identifiable<Long> {
+public class Request extends CreateAtIdentified implements Identifiable<Long> {
 
     private static final long serialVersionUID = 869367318036171304L;
 

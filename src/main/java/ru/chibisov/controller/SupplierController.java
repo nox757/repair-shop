@@ -1,5 +1,7 @@
 package ru.chibisov.controller;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 import ru.chibisov.controller.dto.MaterialDto;
 import ru.chibisov.controller.dto.SupplierDto;
+import ru.chibisov.controller.dto.search.SupplierSearchDto;
 import ru.chibisov.exception.BadUrlRequestException;
 import ru.chibisov.service.MaterialService;
 import ru.chibisov.service.SupplierService;
@@ -43,9 +46,14 @@ public class SupplierController {
         return supplierService.getAllSuppliers();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "{id}")
     private SupplierDto getSupplierById(@PathVariable("id") Long id) {
         return supplierService.getSupplierById(id);
+    }
+
+    @GetMapping(value = "page")
+    public Page<SupplierDto> getFilterSupplier(@RequestBody SupplierSearchDto supplierSearchDto, Pageable pageable) {
+        return supplierService.getSuppliers(supplierSearchDto, pageable);
     }
 
     @PostMapping
@@ -55,7 +63,7 @@ public class SupplierController {
         return ResponseEntity.created(uri).body(result);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "{id}")
     private SupplierDto updateSupplier(@PathVariable("id") Long id,
                                        @Validated @RequestBody SupplierDto supplierDto) {
         if (!supplierDto.getId().equals(id)) {
@@ -64,12 +72,12 @@ public class SupplierController {
         return supplierService.updateSupplier(supplierDto.setId(id));
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "{id}")
     private void deleteSupplier(@PathVariable("id") Long id) {
         supplierService.removeSupplierById(id);
     }
 
-    @GetMapping(value = "/{id}/materials")
+    @GetMapping(value = "{id}/materials")
     private List<MaterialDto> getMaterialsBySupplierId(@PathVariable("id") Long id) {
         return materialService.getAllMaterialsBySupplierId(id);
     }

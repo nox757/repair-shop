@@ -18,7 +18,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "supplier")
-public class Supplier implements Identifiable<Long> {
+public class Supplier extends CreateAtIdentified implements Identifiable<Long> {
 
     private static final long serialVersionUID = -7077314038055460239L;
 

@@ -3,16 +3,21 @@ package ru.chibisov.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.chibisov.controller.dto.SupplierDto;
 import ru.chibisov.controller.dto.mapper.SupplierMapper;
+import ru.chibisov.controller.dto.search.SupplierSearchDto;
 import ru.chibisov.exception.ObjectNotFoundException;
 import ru.chibisov.model.Supplier;
 import ru.chibisov.repository.MaterialRepository;
 import ru.chibisov.repository.SupplierRepository;
 import ru.chibisov.service.SupplierService;
 
+import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -76,4 +81,33 @@ public class SupplierServiceImpl implements SupplierService {
         return mapper.map(suppliers);
     }
 
+    @Override
+    public Page<SupplierDto> getSuppliers(SupplierSearchDto supplierSearchDto, Pageable pageable) {
+        return supplierRepository.findAll(getSpecification(supplierSearchDto), pageable).map(mapper::map);
+    }
+
+    private Specification<Supplier> getSpecification(SupplierSearchDto supplierSearchDto) {
+        return (root, query, builder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            if (supplierSearchDto.getNameAgent() != null) {
+                predicates.add(builder.like(
+                        builder.lower(root.get("nameAgent")),
+                        String.format("%%%s%%", supplierSearchDto.getNameAgent().toLowerCase())
+                ));
+            }
+
+            if (supplierSearchDto.getOrgName() != null) {
+                predicates.add(builder.like(
+                        builder.lower(root.get("orgName")),
+                        String.format("%%%s%%", supplierSearchDto.getOrgName().toLowerCase())
+                ));
+            }
+
+            if (supplierSearchDto.getPhoneAgent() != null) {
+                predicates.add(root.get("phoneAgent").in(supplierSearchDto.getPhoneAgent()));
+            }
+
+            return builder.and(predicates.toArray(new Predicate[predicates.size()]));
+        };
+    }
 }

@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "request_material")
-public class RequestMaterial implements Identifiable<RequestMaterialPk> {
+public class RequestMaterial extends CreateAtIdentified implements Identifiable<RequestMaterialPk> {
 
     private static final long serialVersionUID = -2377172869257359548L;
 

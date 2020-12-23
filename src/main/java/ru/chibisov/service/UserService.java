@@ -1,6 +1,9 @@
 package ru.chibisov.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import ru.chibisov.controller.dto.UserDto;
+import ru.chibisov.controller.dto.search.UserSearchDto;
 
 import java.util.List;
 
@@ -41,4 +44,12 @@ public interface UserService {
      * @return
      */
     List<UserDto> getAllUsers();
+
+    /**
+     * Возвращает страницу со списком пользователей
+     * @param userSearchDto поля для фильтрации
+     * @param pageable информации о разбиении и сортировки
+     * @return страница со списком отфильтрованных пользователей
+     */
+    Page<UserDto> getUsers(UserSearchDto userSearchDto, Pageable pageable);
 }
