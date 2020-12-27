@@ -1,11 +1,18 @@
 package ru.chibisov.model;
 
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
  * Сущность материал-количество, используемый в заявке.
  */
+@Entity
+@Table(name = "request_material")
 public class RequestMaterial implements Identifiable<RequestMaterialPk> {
 
     private static final long serialVersionUID = -2377172869257359548L;
@@ -14,20 +21,22 @@ public class RequestMaterial implements Identifiable<RequestMaterialPk> {
      * Уникальный идентификатор записи в системе,
      * состоящий из идентификтора заявки и материала используемого в конкретной заявке
      */
-    private RequestMaterialPk requestMaterialPk;
+    @EmbeddedId
+    private RequestMaterialPk id;
 
     /**
      * Количество материала для заявки
      */
+    @Column
     private BigDecimal quantity;
 
     @Override
     public RequestMaterialPk getId() {
-        return requestMaterialPk;
+        return id;
     }
 
-    public void setId(RequestMaterialPk requestMaterialPk) {
-        this.requestMaterialPk = requestMaterialPk;
+    public void setId(RequestMaterialPk id) {
+        this.id = id;
     }
 
     public BigDecimal getQuantity() {
@@ -41,24 +50,25 @@ public class RequestMaterial implements Identifiable<RequestMaterialPk> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof RequestMaterial)) return false;
 
         RequestMaterial that = (RequestMaterial) o;
 
-        if (!Objects.equals(requestMaterialPk, that.requestMaterialPk))
-            return false;
+        if (!Objects.equals(id, that.id)) return false;
         return Objects.equals(quantity, that.quantity);
     }
 
     @Override
     public int hashCode() {
-        return requestMaterialPk != null ? requestMaterialPk.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
         return "RequestMaterial{" +
-                "requestMaterialPk=" + requestMaterialPk +
+                "requestMaterialPk=" + id +
                 ", quantity=" + quantity +
                 '}';
     }

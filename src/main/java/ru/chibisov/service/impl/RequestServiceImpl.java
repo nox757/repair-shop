@@ -2,19 +2,18 @@ package ru.chibisov.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.chibisov.controller.dto.RequestDto;
 import ru.chibisov.controller.dto.mapper.RequestMapper;
 import ru.chibisov.controller.dto.mapper.RequestMaterialMapper;
-import ru.chibisov.dao.MaterialDao;
-import ru.chibisov.dao.RequestDao;
-import ru.chibisov.dao.RequestMaterialDao;
-import ru.chibisov.dao.UserDao;
 import ru.chibisov.exception.ObjectNotFoundException;
 import ru.chibisov.model.Request;
 import ru.chibisov.model.RequestMaterial;
 import ru.chibisov.model.RequestMaterialPk;
+import ru.chibisov.repository.RequestMaterialRepository;
+import ru.chibisov.repository.RequestRepository;
 import ru.chibisov.service.RequestService;
 
 import java.util.ArrayList;
@@ -28,43 +27,35 @@ public class RequestServiceImpl implements RequestService {
 
     private static final Logger log = LoggerFactory.getLogger(RequestServiceImpl.class.getName());
 
-    private RequestDao requestDao;
-    private UserDao userDao;
-    private RequestMaterialDao requestMaterialDao;
-    private MaterialDao materialDao;
+    private RequestRepository requestRepository;
+    private RequestMaterialRepository requestMaterialRepository;
     private RequestMapper requestMapper;
-    private RequestMaterialMapper materialMapper;
 
-    public RequestServiceImpl(RequestDao requestDao,
-                              UserDao userDao,
-                              RequestMaterialDao requestMaterialDao,
-                              MaterialDao materialDao,
+    public RequestServiceImpl(RequestRepository requestRepository,
+                              RequestMaterialRepository requestMaterialRepository,
                               RequestMapper requestMapper,
                               RequestMaterialMapper materialMapper) {
-        log.info("createService");
-        this.requestDao = requestDao;
-        this.userDao = userDao;
-        this.requestMaterialDao = requestMaterialDao;
-        this.materialDao = materialDao;
+        log.info("saveService");
+        this.requestRepository = requestRepository;
+        this.requestMaterialRepository = requestMaterialRepository;
         this.requestMapper = requestMapper;
-        this.materialMapper = materialMapper;
     }
 
     @Override
     @Transactional(readOnly = true)
     public RequestDto getRequestById(Long id) {
-        Request result = requestDao.getById(id);
-        if (result == null) {
+        Request result = requestRepository.getOne(id);
+        if (result.getId() == null) {
             throw new ObjectNotFoundException(String.valueOf(id));
         }
-        result.setMaterials(requestMaterialDao.getByRequestId(id));
+        result.setMaterials(requestMaterialRepository.findByRequestId(id));
         return requestMapper.map(result);
     }
 
     @Override
     public RequestDto addRequest(RequestDto requestDto) {
         Request request = requestMapper.map(requestDto);
-        Request result = requestDao.create(request);
+        Request result = requestRepository.save(request);
         addRequestMaterial(request, result);
         return requestMapper.map(result);
     }
@@ -72,16 +63,20 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public RequestDto updateRequest(RequestDto requestDto) {
         Request request = requestMapper.map(requestDto);
-        Request result = requestDao.update(request);
-        Set<RequestMaterial> requestMaterialSet = new HashSet<>(request.getMaterials());
-        result.setMaterials(requestMaterialDao.addOrUpdateAll(requestMaterialSet));
+        Request result = requestRepository.save(request);
+        //todo: возможно есть более правильное решение
+        Set<RequestMaterial> requestMaterials = requestMaterialRepository.findByRequestId(result.getId());
+        requestMaterials.removeAll(result.getMaterials());
+        requestMaterialRepository.deleteAll(requestMaterials);
         return requestMapper.map(result);
     }
 
     @Override
     public void removeRequestById(Long id) {
-        requestMaterialDao.deleteByRequestId(id);
-        if (requestDao.deleteById(id) == null) {
+        try {
+            requestRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            log.debug(e.toString());
             throw new ObjectNotFoundException(String.valueOf(id));
         }
     }
@@ -89,9 +84,9 @@ public class RequestServiceImpl implements RequestService {
     @Override
     @Transactional(readOnly = true)
     public List<RequestDto> getAllRequests() {
-        List<Request> requests = new ArrayList<>(requestDao.getAll());
+        List<Request> requests = new ArrayList<>(requestRepository.findAll());
         for (Request request : requests) {
-            request.setMaterials(requestMaterialDao.getByRequestId(request.getId()));
+            request.setMaterials(requestMaterialRepository.findByRequestId(request.getId()));
         }
         return requestMapper.map(requests);
     }
@@ -109,7 +104,7 @@ public class RequestServiceImpl implements RequestService {
             for (RequestMaterial requestMaterial : requestMaterialSet) {
                 requestMaterial.setId(new RequestMaterialPk(requestMaterial.getId().getMaterialId(), result.getId()));
             }
-            result.setMaterials((Set<RequestMaterial>) requestMaterialDao.addAll(requestMaterialSet));
+            result.setMaterials(new HashSet<>(requestMaterialRepository.saveAll(requestMaterialSet)));
         }
     }
 

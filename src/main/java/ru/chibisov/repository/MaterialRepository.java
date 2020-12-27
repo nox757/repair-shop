@@ -1,14 +1,16 @@
-package ru.chibisov.dao;
+package ru.chibisov.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import ru.chibisov.model.Material;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
  * Интерфейс управления персистетным состоянием объектов с типом Материал {@link Material}
  */
-public interface MaterialDao extends GenericDao<Material, Long> {
+@Repository
+public interface MaterialRepository extends JpaRepository<Material, Long> {
 
     /**
      * Возвращает материал по коду артикула
@@ -16,7 +18,7 @@ public interface MaterialDao extends GenericDao<Material, Long> {
      * @param codeName код арктикула
      * @return найденный матераил
      */
-    Material getByCodeName(String codeName);
+    Material findByCodeName(String codeName);
 
     /**
      * Возвращает список материалов конкретного поставщика
@@ -24,6 +26,6 @@ public interface MaterialDao extends GenericDao<Material, Long> {
      * @param supplierId иденитификатор поставщика
      * @return найденные матераилы
      */
-    List<Material> getBySupplierId(Long supplierId);
+    List<Material> findAllBySupplierId(Long supplierId);
 
 }

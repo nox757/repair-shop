@@ -1,15 +1,18 @@
-package ru.chibisov.dao;
+package ru.chibisov.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import ru.chibisov.model.RequestMaterial;
 import ru.chibisov.model.RequestMaterialPk;
 
-import java.util.Collection;
 import java.util.Set;
 
 /**
  * Интерфейс управления персистетным состоянием объектов с типом Материал-количество, используемый в заявке {@link RequestMaterial}
  */
-public interface RequestMaterialDao extends GenericDao<RequestMaterial, RequestMaterialPk> {
+public interface RequestMaterialRepository extends JpaRepository<RequestMaterial, RequestMaterialPk> {
 
     /**
      * Возвращает материал-количество по id заявки
@@ -17,17 +20,14 @@ public interface RequestMaterialDao extends GenericDao<RequestMaterial, RequestM
      * @param requestId идентификатор заявки в системе
      * @return найденное множество, используемого материала
      */
-    Set<RequestMaterial> getByRequestId(Long requestId);
-
-    /**
-     * Возвращает множество возвращенных добавленных или обновленных материалов
-     * @param requestMaterials идентификатор заявки в системе
-     */
-    Set<RequestMaterial> addOrUpdateAll(Set<RequestMaterial> requestMaterials);
+    @Query("SELECT r FROM RequestMaterial r WHERE r.id.requestId = :requestId")
+    Set<RequestMaterial> findByRequestId(@Param("requestId") Long requestId);
 
     /**
      * Удаляет информацию о количестве материалов в заявке по ее идентификатору
      * @param requestId идентификатор заявки в системе
      */
-    void deleteByRequestId(Long requestId);
+    @Modifying
+    @Query("DELETE FROM RequestMaterial r WHERE r.id.requestId = :requestId")
+    void deleteByRequestId(@Param("requestId") Long requestId);
 }

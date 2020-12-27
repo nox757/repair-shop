@@ -1,8 +1,21 @@
 package ru.chibisov.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import java.util.Objects;
+
 /**
  * Представление сущности пользователя в системе
  */
+@Entity
+@Table(name = "users")
 public class User implements Identifiable<Long> {
 
     private static final long serialVersionUID = 4546946133334325941L;
@@ -10,31 +23,41 @@ public class User implements Identifiable<Long> {
     /**
      * Уникальный идентификатор пользователя в системе
      */
+    @Id
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen")
+    @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_user_id_seq", allocationSize = 1)
     private Long id;
 
     /**
      * Роль пользователя системы
      */
+    @Column
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     /**
      * Логин пользователя
      */
+    @Column
     private String name;
 
     /**
      * Хеш пароля
      */
+    @Column
     private String password;
 
     /**
      * Контактный телефон
      */
+    @Column
     private String phone;
 
     /**
      * Адрес эл. почты
      */
+    @Column
     private String email;
 
     public User() {
@@ -88,6 +111,26 @@ public class User implements Identifiable<Long> {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (role != user.role) return false;
+        if (!Objects.equals(name, user.name)) return false;
+        return Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = role != null ? role.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        return result;
     }
 
     @Override

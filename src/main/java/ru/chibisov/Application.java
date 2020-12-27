@@ -8,12 +8,14 @@ import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ru.chibisov.service.impl.RequestServiceImpl;
 
 @PropertySource("classpath:server.properties")
 @EnableTransactionManagement
 @SpringBootApplication
+@EnableJpaRepositories(basePackages = {"ru.chibisov.repository"})
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(RequestServiceImpl.class.getName());

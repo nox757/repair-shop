@@ -1,18 +1,21 @@
 package ru.chibisov.controller.dto.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import ru.chibisov.controller.dto.MaterialDto;
 import ru.chibisov.model.Material;
 
 import java.util.List;
 
-@Mapper
+@Mapper(uses = {SupplierMapper.class})
 public interface MaterialMapper {
 
-    MaterialDto map(Material supplier);
+    @Mapping(source = "supplier.id", target = "supplierId")
+    MaterialDto map(Material material);
 
-    Material map(MaterialDto supplierDto);
+    @Mapping(source = "supplierId", target = "supplier.id")
+    Material map(MaterialDto materialDto);
 
-    List<MaterialDto> map(List<Material> suppliers);
+    List<MaterialDto> map(List<Material> materials);
 
 }
