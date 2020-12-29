@@ -39,17 +39,12 @@ public class MaterialController {
         this.materialDtoValidator = materialDtoValidator;
     }
 
-    @GetMapping
-    private List<MaterialDto> getMaterials() {
-        return materialService.getAllMaterials();
-    }
-
     @GetMapping(value = "{id}")
     private MaterialDto getMaterialById(@PathVariable("id") Long id) {
         return materialService.getMaterialById(id);
     }
 
-    @GetMapping(value = "page")
+    @GetMapping
     public Page<MaterialDto> getFilterUsers(@RequestBody MaterialSearchDto materialSearchDto, Pageable pageable) {
         return materialService.getMaterials(materialSearchDto, pageable);
     }

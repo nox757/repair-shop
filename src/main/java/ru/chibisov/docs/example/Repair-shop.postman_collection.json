@@ -21,9 +21,21 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:8080/repair-shop/api/v1/users",
 							"host": [
@@ -80,7 +92,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/repair-shop/api/v1/users/page",
+							"raw": "localhost:8080/repair-shop/api/v1/users/",
 							"host": [
 								"localhost"
 							],
@@ -90,7 +102,7 @@
 								"api",
 								"v1",
 								"users",
-								"page"
+								""
 							]
 						}
 					},
@@ -354,9 +366,21 @@
 			"item": [
 				{
 					"name": "All suppliers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:8080/repair-shop/api/v1/suppliers",
 							"host": [
@@ -413,7 +437,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/repair-shop/api/v1/suppliers/page",
+							"raw": "localhost:8080/repair-shop/api/v1/suppliers/",
 							"host": [
 								"localhost"
 							],
@@ -423,7 +447,7 @@
 								"api",
 								"v1",
 								"suppliers",
-								"page"
+								""
 							]
 						}
 					},
@@ -595,9 +619,21 @@
 			"item": [
 				{
 					"name": "All material",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:8080/repair-shop/api/v1/materials",
 							"host": [
@@ -632,7 +668,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/repair-shop/api/v1/materials/page",
+							"raw": "localhost:8080/repair-shop/api/v1/materials",
 							"host": [
 								"localhost"
 							],
@@ -641,8 +677,7 @@
 								"repair-shop",
 								"api",
 								"v1",
-								"materials",
-								"page"
+								"materials"
 							]
 						}
 					},
@@ -803,9 +838,21 @@
 			"item": [
 				{
 					"name": "All requests",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:8080/repair-shop/api/v1/requests/",
 							"host": [
@@ -863,7 +910,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/repair-shop/api/v1/requests/page",
+							"raw": "localhost:8080/repair-shop/api/v1/requests",
 							"host": [
 								"localhost"
 							],
@@ -872,8 +919,7 @@
 								"repair-shop",
 								"api",
 								"v1",
-								"requests",
-								"page"
+								"requests"
 							]
 						}
 					},

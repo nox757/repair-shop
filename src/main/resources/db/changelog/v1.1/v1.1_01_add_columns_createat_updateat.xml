@@ -5,8 +5,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
     <changeSet id="20201220-add-columns-createat-updatead" author="Chibisov Andrey">
-        <addColumn schemaName="public"
-                   tableName="material">
+        <addColumn tableName="material">
             <column afterColumn="supplier_id"
                     name="created_at"
                     type="timestamp with time zone">
@@ -16,8 +15,7 @@
                     type="timestamp with time zone">
             </column>
         </addColumn>
-        <addColumn schemaName="public"
-                   tableName="request">
+        <addColumn tableName="request">
             <column afterColumn="amount"
                     name="created_at"
                     type="timestamp with time zone">
@@ -27,8 +25,7 @@
                     type="timestamp with time zone">
             </column>
         </addColumn>
-        <addColumn schemaName="public"
-                   tableName="request_material">
+        <addColumn tableName="request_material">
             <column afterColumn="request_id"
                     name="created_at"
                     type="timestamp with time zone">
@@ -38,8 +35,7 @@
                     type="timestamp with time zone">
             </column>
         </addColumn>
-        <addColumn schemaName="public"
-                   tableName="supplier">
+        <addColumn tableName="supplier">
             <column afterColumn="phone_agent"
                     name="created_at"
                     type="timestamp with time zone">
@@ -49,8 +45,7 @@
                     type="timestamp with time zone">
             </column>
         </addColumn>
-        <addColumn schemaName="public"
-                   tableName="users">
+        <addColumn tableName="users">
             <column afterColumn="email"
                     name="created_at"
                     type="timestamp with time zone">

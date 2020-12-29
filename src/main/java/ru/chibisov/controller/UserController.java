@@ -37,17 +37,12 @@ public class UserController {
         this.userDtoValidator = userDtoValidator;
     }
 
-    @GetMapping
-    private List<UserDto> getUsers() {
-        return userService.getAllUsers();
-    }
-
     @GetMapping(value = "{id}")
     private UserDto getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }
 
-    @GetMapping(value = "page")
+    @GetMapping
     public Page<UserDto> getFilterUsers(@RequestBody UserSearchDto userSearchDto, Pageable pageable) {
         return userService.getUsers(userSearchDto, pageable);
     }

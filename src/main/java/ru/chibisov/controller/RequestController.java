@@ -40,17 +40,12 @@ public class RequestController {
         this.requestDtoValidator = requestDtoValidator;
     }
 
-    @GetMapping
-    private List<RequestDto> getRequests() {
-        return requestService.getAllRequests();
-    }
-
     @GetMapping(value = "{id}")
     private RequestDto getRequestById(@PathVariable("id") Long id) {
         return requestService.getRequestById(id);
     }
 
-    @GetMapping(value = "page")
+    @GetMapping
     public Page<RequestDto> getFilterUsers(@RequestBody RequestSearchDto requestSearchDto, Pageable pageable) {
         return requestService.getRequests(requestSearchDto, pageable);
     }

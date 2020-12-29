@@ -169,11 +169,7 @@ public class Request extends CreateAtIdentified implements Identifiable<Long> {
     @Override
     public int hashCode() {
         int result = description != null ? description.hashCode() : 0;
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        result = 31 * result + (comment != null ? comment.hashCode() : 0);
-        result = 31 * result + (repairer != null ? repairer.hashCode() : 0);
         result = 31 * result + (customer != null ? customer.hashCode() : 0);
-        result = 31 * result + (amount != null ? amount.hashCode() : 0);
         return result;
     }
 

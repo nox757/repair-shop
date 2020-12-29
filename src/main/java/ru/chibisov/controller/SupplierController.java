@@ -41,17 +41,12 @@ public class SupplierController {
         this.materialService = materialService;
     }
 
-    @GetMapping
-    private List<SupplierDto> getSuppliers() {
-        return supplierService.getAllSuppliers();
-    }
-
     @GetMapping(value = "{id}")
     private SupplierDto getSupplierById(@PathVariable("id") Long id) {
         return supplierService.getSupplierById(id);
     }
 
-    @GetMapping(value = "page")
+    @GetMapping
     public Page<SupplierDto> getFilterSupplier(@RequestBody SupplierSearchDto supplierSearchDto, Pageable pageable) {
         return supplierService.getSuppliers(supplierSearchDto, pageable);
     }

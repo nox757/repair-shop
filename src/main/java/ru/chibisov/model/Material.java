@@ -125,9 +125,7 @@ public class Material extends CreateAtIdentified implements Identifiable<Long> {
 
     @Override
     public int hashCode() {
-        int result = codeName != null ? codeName.hashCode() : 0;
-        result = 31 * result + (supplier != null ? supplier.hashCode() : 0);
-        return result;
+        return codeName != null ? codeName.hashCode() : 0;
     }
 
     @Override
