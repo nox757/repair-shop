@@ -1,61 +1,43 @@
 package ru.chibisov.resource.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
 import java.util.Set;
 
+@ApiModel(description = "Модель заявки")
 public class RequestDto {
 
-    /**
-     * Уникальный идентификатор заявки в системе
-     */
+    @ApiModelProperty(value = "Идентификатор заявки", example = "1")
     private Long id;
 
-    /**
-     * Описание требуемых работ
-     */
+    @ApiModelProperty(value = "Описание требуемых работ", example = "1. Починить ремень 2. Подшить пальто")
     private String description;
 
-    /**
-     * Текущий статус заявки
-     */
+    @ApiModelProperty(value = "Текущий статус заявки", example = "DRAFT|CREATED|WORKED|TERMINATED|CLOSED", required = true)
     private String status;
 
-    /**
-     * Комментарий к заявке
-     */
+    @ApiModelProperty(value = "Комментарий к заявке", example = "Отклонена исполнителем")
     private String comment;
 
-    /**
-     * ИД мастера выполняюшего заявку
-     */
+    @ApiModelProperty(value = "Идентификатор мастера-исполнителя", example = "4")
     private Long repairerId;
 
-    /**
-     * Имя мастер, выполняющий заявку
-     */
+    @ApiModelProperty(value = "Имя мастера-исполнителя", example = "Иванов Иван Иваныч")
     private String nameRepairer;
 
-    /**
-     * ИД закзачика, создавшего заявку
-     */
+    @ApiModelProperty(value = "Идентификатор заказчика", example = "1", required = true)
     private Long customerId;
 
-    /**
-     * Имя закзачик, создавший заявку
-     */
+    @ApiModelProperty(value = "Имя заказчика", example = "Петров Петр Петрович", required = true)
     private String nameCustomer;
 
-    /**
-     * Цена за заказ-заявку
-     */
+    @ApiModelProperty(value = "Цена заявки на починку", example = "24.42")
     private BigDecimal amount;
 
-    /**
-     * Материал и количество, необходимые для починки
-     */
+    @ApiModelProperty(value = "Материал и количество, необходимые для выполнения заявки")
     private Set<RequestMaterialDto> materials;
-
 
     public Long getId() {
         return id;

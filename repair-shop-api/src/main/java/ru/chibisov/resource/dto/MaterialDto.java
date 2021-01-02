@@ -1,37 +1,29 @@
 package ru.chibisov.resource.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.math.BigDecimal;
 
+@ApiModel(description = "Модель материала")
 public class MaterialDto {
 
-    /**
-     * Идентификатор материаала в системе
-     */
+    @ApiModelProperty(value = "Идентификатор материала", example = "1")
     private Long id;
 
-    /**
-     * Уникальное кодовое имя материала (артикул, штрихкод и т.п.)
-     */
+    @ApiModelProperty(value = "Кодовое имя материала", example = "AA02-32/10-5", required = true)
     private String codeName;
 
-    /**
-     * Назавание материала
-     */
+    @ApiModelProperty(value = "Название материала", example = "Сталь", required = true)
     private String name;
 
-    /**
-     * Цена за единицу
-     */
+    @ApiModelProperty(value = "Цена за единицу", example = "25.02", required = true)
     private BigDecimal price;
 
-    /**
-     * Текцщий остаток
-     */
+    @ApiModelProperty(value = "Текущий остаток", example = "4526.0251", required = true)
     private BigDecimal remains;
 
-    /**
-     * Идентификатор поставщика в системе
-     */
+    @ApiModelProperty(value = "Идентификатор поставщика", example = "46", required = true)
     private Long supplierId;
 
     public Long getId() {

@@ -1,25 +1,21 @@
 package ru.chibisov.resource.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Модель поставщика")
 public class SupplierDto {
 
-    /**
-     * Уникальный идентификатор пользователя в системе
-     */
+    @ApiModelProperty(value = "Идентификатор поставщика", example = "2")
     private Long id;
 
-    /**
-     * Название организации поставщика
-     */
+    @ApiModelProperty(value = "Название организации поставщика", example = "ООО 'Рога и копыта'", required = true)
     private String orgName;
 
-    /**
-     * ФИО менеджера
-     */
+    @ApiModelProperty(value = "ФИО менеджера", example = "Костин Константин Константинович", required = true)
     private String nameAgent;
 
-    /**
-     * Контактный телефон медежера отдела продаж
-     */
+    @ApiModelProperty(value = "Контактный телефон менеджера отдела продаж", example = "+79770011223", required = true)
     private String phoneAgent;
 
     public Long getId() {

@@ -1,22 +1,20 @@
 package ru.chibisov.resource.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.math.BigDecimal;
 
+@ApiModel(description = "Модель количества материала в заявке")
 public class RequestMaterialDto {
 
-    /**
-     * Уникальный идентификатор заявки в системе
-     */
+    @ApiModelProperty(value = "Идентификатор заявки", example = "1")
     private Long requestId;
 
-    /**
-     * Материал, используемый в заявке
-     */
+    @ApiModelProperty(value = "Идентификатор материала", example = "1", required = true)
     private Long materialId;
 
-    /**
-     * Количество материала для заявки
-     */
+    @ApiModelProperty(value = "Количество материала, используемого в заявке", example = "12.2504", required = true)
     private BigDecimal quantity;
 
     public Long getRequestId() {

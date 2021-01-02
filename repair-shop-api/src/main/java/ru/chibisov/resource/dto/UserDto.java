@@ -1,37 +1,28 @@
 package ru.chibisov.resource.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Модель пользователя")
 public class UserDto {
 
-    /**
-     * Уникальный идентификатор пользователя в системе
-     */
+    @ApiModelProperty(value = "Идентификатор пользователя", example = "1")
     private Long id;
 
-    /**
-     * Роль пользователя системы
-     */
+    @ApiModelProperty(value = "Роль пользователя", example = "CUSTOMER | REPAIRER", required = true)
     private String role;
 
-    /**
-     * Логин пользователя
-     */
+    @ApiModelProperty(value = "Имя пользователя", example = "Валерьян Валера Валерьевич", required = true)
     private String name;
 
-    /**
-     * Хеш пароля
-     */
+    @ApiModelProperty(value = "Хеш пароля", example = "d8578edf8458ce06fbc5bb76a58c5ca4", required = true)
     private String password;
 
-    /**
-     * Контактный телефон
-     */
+    @ApiModelProperty(value = "Контактный телефон", example = "+79779922001", required = true)
     private String phone;
 
-    /**
-     * Адрес эл. почты
-     */
+    @ApiModelProperty(value = "Адрес электронной почты", example = "test@test.ru", required = true)
     private String email;
-
 
     public Long getId() {
         return id;

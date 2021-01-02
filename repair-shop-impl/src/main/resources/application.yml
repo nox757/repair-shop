@@ -56,3 +56,12 @@ management:
 thread:
   corePoolSize: 4
   maxPoolSize: 8
+
+swagger:
+  title: Демострационный проект
+  description: API для Демострационного проекта
+  contract:
+    mail: chibisov@mail-exmaple.ru
+    name: Andrey C
+    url: http://site-example
+

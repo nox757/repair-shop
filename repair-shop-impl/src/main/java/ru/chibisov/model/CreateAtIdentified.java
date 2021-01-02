@@ -1,6 +1,6 @@
 package ru.chibisov.model;
 
-import ru.chibisov.model.listener.AuditingListener;
+import ru.chibisov.listener.AuditingListener;
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;

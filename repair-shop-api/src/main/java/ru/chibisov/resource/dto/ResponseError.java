@@ -1,27 +1,26 @@
 package ru.chibisov.resource.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.UUID;
 
 /**
  * Общий обобщенный класс для описания возникающих ошибок
  */
+@ApiModel(description = "Модель ответа в результате ошибки")
 public class ResponseError {
 
-    /**
-     * Уникальный иденитификатор ошибки
-     */
+    @ApiModelProperty(value = "Идентификатор ошибки", example = "30ff2b2b-42dc-4a26-93c3-ec312b4819f8", required = true)
     private UUID id;
-    /**
-     * Код ошибки
-     */
+
+    @ApiModelProperty(value = "Код ошибки", example = "unknown", required = true)
     private String code;
-    /**
-     * Сообщение об ошибках
-     */
+
+    @ApiModelProperty(value = "Сообщение об ошибке", example = "Not found", required = true)
     private String message;
-    /**
-     * Текущая операционная система
-     */
+
+    @ApiModelProperty(value = "Идентификатор системы", example = "system-example", required = true)
     private String system;
 
     public ResponseError(UUID id, String code, String message, String system) {
