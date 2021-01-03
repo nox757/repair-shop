@@ -1,32 +1,26 @@
 package ru.chibisov.resource.dto.search;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.math.BigDecimal;
 
+@ApiModel(description = "Модель для поиска заявок")
 public class RequestSearchDto {
 
-    /**
-     * Текущий статус заявки
-     */
+    @ApiModelProperty(value = "Текущий статус заявки", example = "1")
     private String status;
 
-    /**
-     * Комментарий к заявке
-     */
+    @ApiModelProperty(value = "Комментарий к заявке", example = "1")
     private String comment;
 
-    /**
-     * Имя мастер, выполняющий заявку
-     */
+    @ApiModelProperty(value = "Имя мастера, выполняющего заявку", example = "Петр Петрович")
     private String nameRepairer;
 
-    /**
-     * Имя закзачик, создавший заявку
-     */
+    @ApiModelProperty(value = "Имя заказчика, создавшего заявку", example = "Иванов Иван")
     private String nameCustomer;
 
-    /**
-     * Цена за заказ-заявку
-     */
+    @ApiModelProperty(value = "Цена договора заявки", example = "100.00")
     private BigDecimal amount;
 
     public String getStatus() {

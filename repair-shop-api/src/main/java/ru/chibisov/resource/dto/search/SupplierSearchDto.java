@@ -1,20 +1,18 @@
 package ru.chibisov.resource.dto.search;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Модель для поиска поставщиков")
 public class SupplierSearchDto {
 
-    /**
-     * Название организации поставщика
-     */
+    @ApiModelProperty(value = "Название организации поставщика", example = "ООО Рога и копыта")
     private String orgName;
 
-    /**
-     * ФИО менеджера
-     */
+    @ApiModelProperty(value = "ФИО менеджера", example = "Иванов Иван")
     private String nameAgent;
 
-    /**
-     * Контактный телефон медежера отдела продаж
-     */
+    @ApiModelProperty(value = "Контактный телефон менеджера", example = "79778800123")
     private String phoneAgent;
 
     public String getOrgName() {

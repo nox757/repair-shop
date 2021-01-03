@@ -22,6 +22,7 @@ import ru.chibisov.repository.RequestRepository;
 import ru.chibisov.service.RequestService;
 
 import javax.persistence.criteria.Predicate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -95,6 +96,11 @@ public class RequestServiceImpl implements RequestService {
             request.setMaterials(requestMaterialRepository.findByRequestId(request.getId()));
         }
         return requestMapper.map(requests);
+    }
+
+    @Override
+    public void archiveRequestByUpdatedTime(LocalDateTime updatedAt) {
+        requestRepository.updateStatusByUpdatedAtBefore(updatedAt, Status.TERMINATED);
     }
 
     @Override

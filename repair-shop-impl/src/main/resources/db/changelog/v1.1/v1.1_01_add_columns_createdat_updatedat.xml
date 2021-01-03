@@ -1,0 +1,88 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="20201220-add-columns-created_at-updated_at-material" author="Chibisov Andrey">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="material" columnName="created_at"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="material">
+            <column name="created_at" type="timestamp with time zone" remarks="Время создания">
+            </column>
+            <column afterColumn="created_at"
+                    name="updated_at"
+                    type="timestamp with time zone"
+                    remarks="Время обновления">
+            </column>
+        </addColumn>
+        <comment>Задача по добавлению колонок создания и обновления в таблицу материалы</comment>
+    </changeSet>
+    <changeSet id="20201220-add-columns-created_at-updated_at-request" author="Chibisov Andrey">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="request" columnName="created_at"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="request">
+            <column name="created_at" type="timestamp with time zone" remarks="Время создания"/>
+            <column afterColumn="created_at"
+                    name="updated_at"
+                    type="timestamp with time zone"
+                    remarks="Время обновления">
+            </column>
+        </addColumn>
+        <comment>Задача по добавлению колонок создания и обновления в таблицу заявки</comment>
+    </changeSet>
+    <changeSet id="20201220-add-columns-created_at-updated_at-request_material" author="Chibisov Andrey">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="request_material" columnName="created_at"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="request_material">
+            <column name="created_at" type="timestamp with time zone" remarks="Время создания"/>
+            <column afterColumn="created_at"
+                    name="updated_at"
+                    type="timestamp with time zone"
+                    remarks="Время обновления">
+            </column>
+        </addColumn>
+        <comment>Задача по добавлению колонок создания и обновления в таблицу материалы по заявке</comment>
+    </changeSet>
+    <changeSet id="20201220-add-columns-create_at-updated_at-supplier" author="Chibisov Andrey">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="supplier" columnName="created_at"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="supplier">
+            <column name="created_at" type="timestamp with time zone" remarks="Время создания"/>
+            <column afterColumn="created_at"
+                    name="updated_at"
+                    type="timestamp with time zone"
+                    remarks="Время обновления">
+            </column>
+        </addColumn>
+        <comment>Задача по добавлению колонок создания и обновления в таблицу поставщики</comment>
+    </changeSet>
+    <changeSet id="20201220-add-columns-created_at-updated_at-users" author="Chibisov Andrey">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="users" columnName="created_at"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="users">
+            <column name="created_at" type="timestamp with time zone" remarks="Время создания"/>
+            <column afterColumn="created_at"
+                    name="updated_at"
+                    type="timestamp with time zone"
+                    remarks="Время обновления">
+            </column>
+        </addColumn>
+        <comment>Задача по добавлению колонок создания и обновления в таблицу пользователи</comment>
+    </changeSet>
+</databaseChangeLog>

@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedResourcesAssembler;
 import ru.chibisov.config.properties.SwaggerProperties;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -42,6 +41,7 @@ public class SwaggerConfig {
     @Bean
     public Docket apiOrder() {
         return buildDocket("/api")
+                .useDefaultResponseMessages(false)
                 .ignoredParameterTypes(Pageable.class);
     }
 

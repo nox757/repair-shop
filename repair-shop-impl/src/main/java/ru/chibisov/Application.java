@@ -9,10 +9,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ru.chibisov.service.impl.RequestServiceImpl;
 
 @PropertySource("classpath:server.properties")
+@EnableScheduling
 @EnableTransactionManagement
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = {"ru.chibisov.repository"})

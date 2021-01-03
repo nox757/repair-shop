@@ -1,20 +1,18 @@
 package ru.chibisov.resource.dto.search;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Модель для поиска пользователей")
 public class UserSearchDto {
 
-    /**
-     * Логин пользователя
-     */
+    @ApiModelProperty(value = "Имф пользователя", example = "Иванов Иван")
     private String name;
 
-    /**
-     * Адрес эл. почты
-     */
+    @ApiModelProperty(value = "Адрес электронной почты", example = "test@test.ru")
     private String email;
 
-    /**
-     * Телефон пользователя
-     */
+    @ApiModelProperty(value = "Телефон пользователя", example = "79778899743")
     private String phone;
 
     public String getName() {

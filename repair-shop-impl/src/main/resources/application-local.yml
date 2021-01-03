@@ -24,3 +24,8 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
+
+scheduling:
+  cron:
+    enabled: true
+    expression: "0 * * * * *"

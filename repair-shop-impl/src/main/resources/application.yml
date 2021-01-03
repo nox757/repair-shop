@@ -65,3 +65,9 @@ swagger:
     name: Andrey C
     url: http://site-example
 
+scheduling:
+  cron:
+    enabled: true
+    expression: "0 1 1 1 12 *"
+
+

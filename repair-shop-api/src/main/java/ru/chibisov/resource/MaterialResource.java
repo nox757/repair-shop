@@ -29,6 +29,11 @@ public interface MaterialResource {
 
     @GetMapping(value = "{id}")
     @ApiOperation(value = "Детальная информация о материале")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Найденный материал",
+                    response = MaterialDto.class),
+            @ApiResponse(code = 400, message = "Непредвиденная ошибка", response = ResponseError.class)
+    })
     MaterialDto getMaterialById(@PathVariable("id") Long id);
 
     @GetMapping
@@ -46,14 +51,9 @@ public interface MaterialResource {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Список найденных материалов, доступных вызывающей стороне",
                     response = MaterialSearchDto.class, responseContainer = "Page"),
-            @ApiResponse(code = 400, message = "Непредвиденная ошибка", response = ResponseError.class),
-            @ApiResponse(code = 401,
-                    message = "Полномочия не подтверждены. Например, JWT невалиден, отсутствует, либо неверного формата",
-                    response = ResponseError.class),
-            @ApiResponse(code = 403, message = "Нет полномочий на выполнение запрашиваемой операции",
-                    response = ResponseError.class)
+            @ApiResponse(code = 400, message = "Непредвиденная ошибка", response = ResponseError.class)
     })
-    Page<MaterialDto> getFilterUsers(@RequestBody MaterialSearchDto materialSearchDto,
+    Page<MaterialDto> getFilterMaterials(@RequestBody MaterialSearchDto materialSearchDto,
                                      @PageableDefault(sort = {"name"}, direction = Sort.Direction.ASC) Pageable pageable);
 
     @PostMapping
@@ -61,21 +61,24 @@ public interface MaterialResource {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Материал успешно создан. Ссылка на вновь созданный материал в поле заголовка `Location`. Описание самого материала будет возвращено в теле ответа",
                     response = MaterialDto.class),
-            @ApiResponse(code = 400, message = "Непредвиденная ошибка", response = ResponseError.class),
-            @ApiResponse(code = 401,
-                    message = "Полномочия не подтверждены. Например, JWT невалиден, отсутствует, либо неверного формата",
-                    response = ResponseError.class),
-            @ApiResponse(code = 403, message = "Нет полномочий на выполнение запрашиваемой операции",
-                    response = ResponseError.class)
+            @ApiResponse(code = 400, message = "Непредвиденная ошибка", response = ResponseError.class)
     })
     ResponseEntity<MaterialDto> createMaterial(@RequestBody MaterialDto materialDto, UriComponentsBuilder componentsBuilder);
 
     @PutMapping(value = "{id}")
     @ApiOperation(value = "Обновление материала")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Материал успешно обновлен"),
+            @ApiResponse(code = 400, message = "Непредвиденная ошибка", response = ResponseError.class),
+    })
     MaterialDto updateMaterial(@PathVariable("id") Long id, @RequestBody MaterialDto materialDto);
 
     @DeleteMapping(value = "{id}")
     @ApiOperation(value = "Удаление материала")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Материал успешно удален"),
+            @ApiResponse(code = 400, message = "Непредвиденная ошибка", response = ResponseError.class),
+    })
     void deleteMaterial(@PathVariable("id") Long id);
 
 }

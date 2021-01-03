@@ -1,27 +1,23 @@
 package ru.chibisov.resource.dto.search;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.math.BigDecimal;
 
+@ApiModel(description = "Модель для поиска материалов")
 public class MaterialSearchDto {
 
-    /**
-     * Уникальное кодовое имя материала (артикул, штрихкод и т.п.)
-     */
+    @ApiModelProperty(value = "Уникальное кодовое имя материала", example = "100/225-54/5")
     private String codeName;
 
-    /**
-     * Назавание материала
-     */
+    @ApiModelProperty(value = "Название материала материала", example = "Сталь")
     private String name;
 
-    /**
-     * Цена за единицу
-     */
+    @ApiModelProperty(value = "Цена за единицу", example = "12.12")
     private BigDecimal price;
 
-    /**
-     * Назавание организации поставщика
-     */
+    @ApiModelProperty(value = "Название организации поставщика", example = "ООО Рога и копыта")
     private String orgName;
 
     public String getCodeName() {
