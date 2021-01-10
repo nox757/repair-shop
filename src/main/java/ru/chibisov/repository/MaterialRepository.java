@@ -1,6 +1,7 @@
 package ru.chibisov.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 import ru.chibisov.model.Material;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Интерфейс управления персистетным состоянием объектов с типом Материал {@link Material}
  */
 @Repository
-public interface MaterialRepository extends JpaRepository<Material, Long> {
+public interface MaterialRepository extends JpaRepository<Material, Long>, JpaSpecificationExecutor<Material> {
 
     /**
      * Возвращает материал по коду артикула

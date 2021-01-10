@@ -1,6 +1,9 @@
 package ru.chibisov.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import ru.chibisov.controller.dto.MaterialDto;
+import ru.chibisov.controller.dto.search.MaterialSearchDto;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -48,4 +51,11 @@ public interface MaterialService {
      */
     List<MaterialDto> getAllMaterialsBySupplierId(Long supplierId);
 
+    /**
+     * Возвращает страницу со списоком материалов
+     * @param materialSearchDto поля фильтрации
+     * @param pageable информация о разбиение и сортировке
+     * @return страница со списком отфильтрованных материалов
+     */
+    Page<MaterialDto> getMaterials(MaterialSearchDto materialSearchDto, Pageable pageable);
 }

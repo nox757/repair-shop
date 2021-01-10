@@ -16,7 +16,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "users")
-public class User implements Identifiable<Long> {
+public class User extends CreateAtIdentified implements Identifiable<Long> {
 
     private static final long serialVersionUID = 4546946133334325941L;
 

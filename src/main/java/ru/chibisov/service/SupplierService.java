@@ -1,7 +1,9 @@
 package ru.chibisov.service;
 
-import ru.chibisov.controller.dto.MaterialDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import ru.chibisov.controller.dto.SupplierDto;
+import ru.chibisov.controller.dto.search.SupplierSearchDto;
 
 import java.util.List;
 
@@ -42,4 +44,12 @@ public interface SupplierService {
      * @return
      */
     List<SupplierDto> getAllSuppliers();
+
+    /**
+     * Возвращает страницу со списком поставщиков
+     * @param supplierSearchDto поля для фильтрации
+     * @param pageable ифнормации о разбиении и сортировки
+     * @return страница со списком отфильтрованных поставщиков
+     */
+    Page<SupplierDto> getSuppliers(SupplierSearchDto supplierSearchDto, Pageable pageable);
 }

@@ -23,7 +23,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "request")
-public class Request implements Identifiable<Long> {
+public class Request extends CreateAtIdentified implements Identifiable<Long> {
 
     private static final long serialVersionUID = 869367318036171304L;
 
@@ -169,11 +169,7 @@ public class Request implements Identifiable<Long> {
     @Override
     public int hashCode() {
         int result = description != null ? description.hashCode() : 0;
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        result = 31 * result + (comment != null ? comment.hashCode() : 0);
-        result = 31 * result + (repairer != null ? repairer.hashCode() : 0);
         result = 31 * result + (customer != null ? customer.hashCode() : 0);
-        result = 31 * result + (amount != null ? amount.hashCode() : 0);
         return result;
     }
 

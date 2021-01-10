@@ -1,7 +1,9 @@
 package ru.chibisov.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import ru.chibisov.controller.dto.RequestDto;
-import ru.chibisov.controller.dto.RequestMaterialDto;
+import ru.chibisov.controller.dto.search.RequestSearchDto;
 
 import java.util.List;
 
@@ -42,4 +44,12 @@ public interface RequestService {
      * @return
      */
     List<RequestDto> getAllRequests();
+
+    /**
+     * Возвращает страницу со списком заявок
+     * @param requestSearchDto поля для фильтрации
+     * @param pageable информации о разбиении и сортеровке
+     * @return страница со списком отфильрованных материалов
+     */
+    Page<RequestDto> getRequests(RequestSearchDto requestSearchDto, Pageable pageable);
 }

@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "material")
-public class Material implements Identifiable<Long> {
+public class Material extends CreateAtIdentified implements Identifiable<Long> {
 
     private static final long serialVersionUID = 771612548606857971L;
 
@@ -125,9 +125,7 @@ public class Material implements Identifiable<Long> {
 
     @Override
     public int hashCode() {
-        int result = codeName != null ? codeName.hashCode() : 0;
-        result = 31 * result + (supplier != null ? supplier.hashCode() : 0);
-        return result;
+        return codeName != null ? codeName.hashCode() : 0;
     }
 
     @Override

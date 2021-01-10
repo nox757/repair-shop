@@ -1,5 +1,7 @@
 package ru.chibisov.controller;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 import ru.chibisov.controller.dto.UserDto;
+import ru.chibisov.controller.dto.search.UserSearchDto;
 import ru.chibisov.exception.BadUrlRequestException;
 import ru.chibisov.service.UserService;
 import ru.chibisov.validator.UserDtoValidator;
@@ -34,14 +37,14 @@ public class UserController {
         this.userDtoValidator = userDtoValidator;
     }
 
-    @GetMapping
-    private List<UserDto> getUsers() {
-        return userService.getAllUsers();
-    }
-
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "{id}")
     private UserDto getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
+    }
+
+    @GetMapping
+    public Page<UserDto> getFilterUsers(@RequestBody UserSearchDto userSearchDto, Pageable pageable) {
+        return userService.getUsers(userSearchDto, pageable);
     }
 
     @PostMapping
@@ -51,7 +54,7 @@ public class UserController {
         return ResponseEntity.created(uri).body(result);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "{id}")
     private UserDto updateUser(@PathVariable("id") Long id,
                                @Validated @RequestBody UserDto userDto) {
         if (!userDto.getId().equals(id)) {
@@ -60,7 +63,7 @@ public class UserController {
         return userService.updateUser(userDto.setId(id));
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "{id}")
     private void deleteUser(@PathVariable("id") Long id) {
         userService.removeUserById(id);
     }

@@ -1,5 +1,7 @@
 package ru.chibisov.controller;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
@@ -15,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 import ru.chibisov.controller.dto.RequestDto;
+import ru.chibisov.controller.dto.UserDto;
+import ru.chibisov.controller.dto.search.RequestSearchDto;
+import ru.chibisov.controller.dto.search.UserSearchDto;
 import ru.chibisov.exception.BadUrlRequestException;
+import ru.chibisov.model.Request;
 import ru.chibisov.service.RequestService;
 import ru.chibisov.validator.RequestDtoValidator;
 
@@ -34,14 +40,14 @@ public class RequestController {
         this.requestDtoValidator = requestDtoValidator;
     }
 
-    @GetMapping
-    private List<RequestDto> getRequests() {
-        return requestService.getAllRequests();
-    }
-
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "{id}")
     private RequestDto getRequestById(@PathVariable("id") Long id) {
         return requestService.getRequestById(id);
+    }
+
+    @GetMapping
+    public Page<RequestDto> getFilterRequests(@RequestBody RequestSearchDto requestSearchDto, Pageable pageable) {
+        return requestService.getRequests(requestSearchDto, pageable);
     }
 
     @PostMapping
@@ -51,7 +57,7 @@ public class RequestController {
         return ResponseEntity.created(uri).body(result);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "{id}")
     private RequestDto updateRequest(@PathVariable("id") Long id,
                                      @Validated @RequestBody RequestDto requestDto) {
         if (!requestDto.getId().equals(id)) {
@@ -60,7 +66,7 @@ public class RequestController {
         return requestService.updateRequest(requestDto.setId(id));
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "{id}")
     private void deleteRequest(@PathVariable("id") Long id) {
         requestService.removeRequestById(id);
     }
