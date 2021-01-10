@@ -1,0 +1,31 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    properties:
+      hibernate.temp.use_jdbc_metadata_defaults: false
+      hibernate:
+        format_sql: true
+        show-sql: true
+    show-sql: true
+  config:
+    use-legacy-processing: true
+  profiles:
+    active: local
+    include: swagger
+
+logging:
+  level:
+    ROOT: INFO
+    ru.chibisov: DEBUG
+    org.springframework: INFO
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+scheduling:
+  cron:
+    enabled: true
+    expression: "0 * * * * *"
