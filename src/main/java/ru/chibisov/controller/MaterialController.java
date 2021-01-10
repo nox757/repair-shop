@@ -45,7 +45,7 @@ public class MaterialController {
     }
 
     @GetMapping
-    public Page<MaterialDto> getFilterUsers(@RequestBody MaterialSearchDto materialSearchDto, Pageable pageable) {
+    public Page<MaterialDto> getFilterMaterials(@RequestBody MaterialSearchDto materialSearchDto, Pageable pageable) {
         return materialService.getMaterials(materialSearchDto, pageable);
     }
 

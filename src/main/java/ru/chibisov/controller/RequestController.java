@@ -46,7 +46,7 @@ public class RequestController {
     }
 
     @GetMapping
-    public Page<RequestDto> getFilterUsers(@RequestBody RequestSearchDto requestSearchDto, Pageable pageable) {
+    public Page<RequestDto> getFilterRequests(@RequestBody RequestSearchDto requestSearchDto, Pageable pageable) {
         return requestService.getRequests(requestSearchDto, pageable);
     }
 
