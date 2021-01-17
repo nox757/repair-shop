@@ -15,14 +15,14 @@ public class AuditingListener {
 
     @PrePersist
     public void prePersist(CreateAtIdentified createAtIdentified) {
-        log.info("prePersist - created");
+        log.debug("prePersist - created");
         createAtIdentified.setCreatedAt(LocalDateTime.now());
         createAtIdentified.setUpdatedAt(createAtIdentified.getCreatedAt());
     }
 
     @PreUpdate
     public void preUpdate(CreateAtIdentified createAtIdentified) {
-        log.info("preUpdate - updated");
+        log.debug("preUpdate - updated");
         createAtIdentified.setUpdatedAt(LocalDateTime.now());
     }
 

@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -16,8 +17,9 @@ import ru.chibisov.service.impl.RequestServiceImpl;
 @PropertySource("classpath:server.properties")
 @EnableScheduling
 @EnableTransactionManagement
+@EnableAspectJAutoProxy
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = {"ru.chibisov.repository"})
+@EnableJpaRepositories(basePackages = {"ru.chibisov.repository", "ru.chibisov.audit.repository"})
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(RequestServiceImpl.class.getName());

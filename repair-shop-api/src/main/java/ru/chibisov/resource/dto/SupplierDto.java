@@ -54,4 +54,13 @@ public class SupplierDto {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "SupplierDto{" +
+                "id=" + id +
+                ", orgName='" + orgName + '\'' +
+                ", nameAgent='" + nameAgent + '\'' +
+                ", phoneAgent='" + phoneAgent + '\'' +
+                '}';
+    }
 }

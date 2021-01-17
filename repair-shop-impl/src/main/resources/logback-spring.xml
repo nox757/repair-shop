@@ -1,0 +1,70 @@
+<configuration>
+
+    <springProperty name="LOG_PATH" source="logging.appenders.file.path" defaultValue="logs"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <springProperty scope="context" name="AUDIT_PATH" source="audit.file.path" defaultValue="${LOG_PATH}/audit"/>
+    <springProperty scope="context" name="AUDIT_NAME" source="audit..file.logName" defaultValue="audit"/>
+    <springProperty scope="context" name="MAX_HISTORY" source="audit.file.maxHistory" defaultValue="300"/>
+    <property name="AUDIT_ARCHIVE" value="${AUDIT_PATH}/archive"/>
+    <appender name="audit_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${AUDIT_PATH}/${AUDIT_NAME}.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%msg%n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${AUDIT_ARCHIVE}/${AUDIT_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="ru.chibisov.audit.service.AuditLoggingAspectService" level="INFO" additivity="false">
+        <appender-ref ref="audit_file"/>
+    </logger>
+
+    <springProperty scope="context" name="FILE_NAME" source="logging.appenders.file.logName" defaultValue="logs"/>
+    <springProperty scope="context" name="MAX_HISTORY" source="logging.appenders.file.maxHistory" defaultValue="300"/>
+    <property name="FILE_ARCHIVE" value="${FILE_PATH}/archive"/>
+    <springProperty name="FILE_ENABLED" source="logging.appenders.file.enabled"/>
+    <if condition='p("FILE_ENABLED").equals("true")'>
+        <then>
+            <appender name="log_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>${LOG_PATH}/${FILE_NAME}.log</file>
+                <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                    <pattern>${FILE_LOG_PATTERN}</pattern>
+                    <charset>UTF-8</charset>
+                </encoder>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <fileNamePattern>${FILE_ARCHIVE}/${FILE_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+                    <maxHistory>${MAX_HISTORY}</maxHistory>
+                </rollingPolicy>
+            </appender>
+        </then>
+    </if>
+
+    <springProperty name="CONSOLE_ENABLED" source="logging.appenders.console.enabled"/>
+    <if condition='p("CONSOLE_ENABLED").equals("true")'>
+        <then>
+            <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+                <encoder>
+                    <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+                </encoder>
+            </appender>
+        </then>
+    </if>
+
+    <root level="INFO">
+        <if condition='p("CONSOLE_ENABLED").equals("true")'>
+            <then>
+                <appender-ref ref="console"/>
+            </then>
+        </if>
+        <if condition='p("FILE_ENABLED").equals("true")'>
+            <then>
+                <appender-ref ref="log_file"/>
+            </then>
+        </if>
+    </root>
+
+</configuration>

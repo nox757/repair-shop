@@ -128,4 +128,20 @@ public class RequestDto {
         this.materials = materials;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "RequestDto{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                ", comment='" + comment + '\'' +
+                ", repairerId=" + repairerId +
+                ", nameRepairer='" + nameRepairer + '\'' +
+                ", customerId=" + customerId +
+                ", nameCustomer='" + nameCustomer + '\'' +
+                ", amount=" + amount +
+                ", materials=" + materials +
+                '}';
+    }
 }

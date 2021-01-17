@@ -55,4 +55,14 @@ public class MaterialSearchDto {
         this.orgName = orgName;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "MaterialSearchDto{" +
+                "codeName='" + codeName + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", orgName='" + orgName + '\'' +
+                '}';
+    }
 }

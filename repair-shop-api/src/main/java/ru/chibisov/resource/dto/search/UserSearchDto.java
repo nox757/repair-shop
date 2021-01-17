@@ -41,4 +41,13 @@ public class UserSearchDto {
         this.phone = phone;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "UserSearchDto{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

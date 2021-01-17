@@ -79,4 +79,16 @@ public class MaterialDto {
         this.supplierId = supplierId;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "MaterialDto{" +
+                "id=" + id +
+                ", codeName='" + codeName + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", remains=" + remains +
+                ", supplierId=" + supplierId +
+                '}';
+    }
 }
