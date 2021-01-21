@@ -1,4 +1,5 @@
 rootProject.name = 'repair-shop'
 include 'repair-shop-impl'
 include 'repair-shop-api'
+include 'repair-shop-audit'
 

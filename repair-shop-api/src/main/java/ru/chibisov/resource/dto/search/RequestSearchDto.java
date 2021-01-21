@@ -67,4 +67,15 @@ public class RequestSearchDto {
         this.amount = amount;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "RequestSearchDto{" +
+                "status='" + status + '\'' +
+                ", comment='" + comment + '\'' +
+                ", nameRepairer='" + nameRepairer + '\'' +
+                ", nameCustomer='" + nameCustomer + '\'' +
+                ", amount=" + amount +
+                '}';
+    }
 }

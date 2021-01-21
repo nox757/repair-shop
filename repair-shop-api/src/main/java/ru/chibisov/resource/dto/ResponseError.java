@@ -65,4 +65,14 @@ public class ResponseError {
         this.system = system;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseError{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", message='" + message + '\'' +
+                ", system='" + system + '\'' +
+                '}';
+    }
 }

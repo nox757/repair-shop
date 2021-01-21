@@ -43,4 +43,13 @@ public class RequestMaterialDto {
         this.quantity = quantity;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "RequestMaterialDto{" +
+                "requestId=" + requestId +
+                ", materialId=" + materialId +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

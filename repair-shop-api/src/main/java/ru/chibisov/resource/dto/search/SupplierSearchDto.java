@@ -41,4 +41,13 @@ public class SupplierSearchDto {
         this.phoneAgent = phoneAgent;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "SupplierSearchDto{" +
+                "orgName='" + orgName + '\'' +
+                ", nameAgent='" + nameAgent + '\'' +
+                ", phoneAgent='" + phoneAgent + '\'' +
+                '}';
+    }
 }

@@ -4,27 +4,24 @@ spring:
     properties:
       hibernate.temp.use_jdbc_metadata_defaults: false
       hibernate:
-        format_sql: true
-        show-sql: true
-    show-sql: true
+        show-sql: false
+    show-sql: false
   config:
     use-legacy-processing: true
   profiles:
-    active: local
-    include: swagger
+    active: development
 
 logging:
   level:
     ROOT: INFO
-    ru.chibisov: DEBUG
-    ru.chibisov.audit: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    ru.chibisov: INFO
+    ru.chibisov.audit: INFO
     org.springframework: INFO
   appenders:
     console:
-      enabled: true
-    file:
       enabled: false
+    file:
+      enabled: true
 
 scheduling:
   cron:
@@ -33,4 +30,5 @@ scheduling:
 
 audit:
   db:
-    enabled: false
+    enabled: true
+

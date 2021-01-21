@@ -10,6 +10,7 @@ bootJar {
 dependencies {
 
     implementation project(":repair-shop-api")
+    implementation project(":repair-shop-audit")
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -18,6 +19,7 @@ dependencies {
 
     implementation 'org.liquibase:liquibase-core:4.1.1'
     implementation 'org.postgresql:postgresql:42.2.18'
+    implementation 'org.codehaus.janino:janino:3.0.7'
 
     implementation 'org.mapstruct:mapstruct:1.4.1.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
